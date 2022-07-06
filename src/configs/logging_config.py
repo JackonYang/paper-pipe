@@ -4,14 +4,10 @@ import os
 import datetime
 
 from .path_config import (
-    OUTPUT_ROOT,
+    LOG_ROOT_DIR,
 )
 
 timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H%M%S_%f')
-
-LOG_ROOT_DIR = os.path.join(
-    OUTPUT_ROOT, 'logs'
-)
 
 root_log_file = os.path.join(
     LOG_ROOT_DIR, 'root_debug-%s.log' % timestamp)
