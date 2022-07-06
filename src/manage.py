@@ -2,9 +2,19 @@ import sys
 import argparse
 import os
 import json
+from importlib import import_module
+
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+pipeline_dirname = 'pipelines'
+
+ignored_pipe_names = [
+    '__init__.py',
+    'base_pipeline.py',
+]
 
 pipeline_choices = [
-    'gen-notes-md',
+    f[:-3].replace('_', '-') for f in os.listdir(os.path.join(CURRENT_DIR, pipeline_dirname)) if f.endswith('.py') and f not in ignored_pipe_names
 ]
 
 
@@ -14,7 +24,15 @@ def default_pipe_runner_func(**kwargs):
 
 
 def load_pipeline_runner(pipe_name):
-    return default_pipe_runner_func
+
+    module_name = '%s.%s' % (
+        pipeline_dirname, pipe_name.replace('-', '_'))
+    pipe_module = import_module(module_name)
+
+    func = pipe_module.pipe_runner_func
+    # func = default_pipe_runner_func
+
+    return func
 
 
 def load_ini():
