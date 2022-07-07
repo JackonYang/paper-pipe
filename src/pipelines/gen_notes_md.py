@@ -1,8 +1,8 @@
-
-class GenNotesMdPipe():
-    def run_all(**kwargs):
-        print('running gen_notes_md.run_all()')
-        return 0
+from .base_pipeline import BasePipeline
 
 
-pipe_runner_func = GenNotesMdPipe.run_all
+class GenNotesMdPipe(BasePipeline):
+    pass
+
+
+pipe_runner_func = GenNotesMdPipe().run_all
