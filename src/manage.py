@@ -3,6 +3,7 @@ import argparse
 import os
 import json
 from importlib import import_module
+import configs  # noqa E402. enable logging
 
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
