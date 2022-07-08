@@ -14,4 +14,6 @@ CRAWLER_CACHE_ROOT = os.path.join(USER_DATA_ROOT, 'paper-crawler-cache')
 
 # user data dir
 PAPER_NOTES_DIR = os.path.join(USER_DATA_ROOT, '01-zettelkasten/paper-notes')
+
 PDF_DIR = os.path.join(USER_DATA_ROOT, 'paper-repo/pdfs')
+PDF_META_DIR = os.path.join(EXTRA_DATA_ROOT, 'pdf-meta')
