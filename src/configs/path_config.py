@@ -14,7 +14,9 @@ NOTE_TEMPLATE_NAME = 'notes-md.tmpl'
 
 # system data dir
 EXTRA_DATA_ROOT = os.path.join(USER_DATA_ROOT, 'paper-extra-data')
+
 CRAWLER_CACHE_ROOT = os.path.join(USER_DATA_ROOT, 'paper-crawler-cache')
+CRAWLED_REFERENCE_INFO_DIR = os.path.join(CRAWLER_CACHE_ROOT, 'reference-info')
 
 # user data dir
 PAPER_NOTES_DIR = os.path.join(USER_DATA_ROOT, '01-zettelkasten/paper-notes')

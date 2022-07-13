@@ -16,6 +16,11 @@ gen-notes-md:
 gen-pdf-meta:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-meta
 
+paper-download:
+	cd $(CODE_ROOT) && $(PY) manage.py paper_download
+
+
+
 # ----
 
 check-dup:
@@ -49,6 +54,7 @@ test:
 	PYTHONPATH=$(CODE_ROOT) pytest --cov $(CODE_ROOT) --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
 
 .PHONY: help
+.PHONY: paper-download
 .PHONY: gen-notes-md gen-pdf-meta gen-pdf-notes
 
 .PHONY: check-dup
