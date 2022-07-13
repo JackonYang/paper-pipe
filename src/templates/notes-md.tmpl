@@ -1,0 +1,21 @@
+---
+{{ meta_str }}
+---
+{% if pdf_path %}
+[pdf(local)]({{ pdf_path }})
+{% endif -%}
+{% if content %}
+{{ content }}
+{% else %}
+# {{ meta.title }}
+{% endif -%}
+{%- if render_ref_list %}
+## References
+{% for ref in meta['references'] %}
+{%- if ref.show_ref_link %}
+- [{{ref['title']}}]({{ notes_common_path }}/{{ ref['meta_key'] }}.md)
+{%- else %}
+- {{ ref['title'] }}
+{%- endif %}
+{%- endfor %}
+{% endif -%}

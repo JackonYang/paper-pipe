@@ -2,11 +2,15 @@ import os
 
 from .constants import (
     PROJECT_ROOT,
+    PROJECT_SRC_ROOT,
 )
 
 LOG_ROOT_DIR = os.path.join(PROJECT_ROOT, 'src/logs')
 
 USER_DATA_ROOT = os.path.dirname(PROJECT_ROOT)
+
+TEMPLATE_DIR = os.path.join(PROJECT_SRC_ROOT, 'templates')
+NOTE_TEMPLATE_NAME = 'notes-md.tmpl'
 
 # system data dir
 EXTRA_DATA_ROOT = os.path.join(USER_DATA_ROOT, 'paper-extra-data')

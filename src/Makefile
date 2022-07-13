@@ -7,6 +7,9 @@ CODE_ROOT?=.
 help:
 	cd $(CODE_ROOT) && $(PY) manage.py --help
 
+gen-pdf-notes:
+	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-notes
+
 gen-notes-md:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md
 
@@ -46,7 +49,7 @@ test:
 	PYTHONPATH=$(CODE_ROOT) pytest --cov $(CODE_ROOT) --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
 
 .PHONY: help
-.PHONY: gen-notes-md gen-pdf-meta
+.PHONY: gen-notes-md gen-pdf-meta gen-pdf-notes
 
 .PHONY: check-dup
 .PHONY: clean-deleted
