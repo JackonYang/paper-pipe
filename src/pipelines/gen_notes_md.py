@@ -5,7 +5,14 @@ import os
 
 from .base_pipeline import BasePipeline
 from modules.pdf_meta_ir import PdfMetaIR
+from modules.ref_meta_ir import RefMetaIR
 from modules.note_md_ir import NoteMdIR
+
+
+from configs import (
+    REF_DEFAULT_TAG,
+    TYPE_DEFAULT_TAG,
+)
 
 import logging
 
@@ -16,11 +23,20 @@ title_escape_re = re.compile(r'\s*(?:[":]+\s*)+')
 
 h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
 
-ignore_pdf_meta_keys = [
+ignore_keys_from_meta_info = [
     'raw_filename',
     'raw_ext',
     'content_md5',
     'filesize',
+    'corpusId',
+    'slug',
+    'url',
+    'badges',
+    'numCiting',
+]
+
+ignore_meta_in_heading = [
+    'references',
 ]
 
 meta_keys_order = [
@@ -42,6 +58,9 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
     def add_default_meta(self, note_meta):
         note_meta.setdefault('reading_status', default_reading_status)
 
+        if 'tags' not in note_meta:
+            note_meta['tags'] = [REF_DEFAULT_TAG, TYPE_DEFAULT_TAG]
+
     def render_meta_str(self, meta):
         heading_meta = copy.deepcopy(meta)
         meta_str = ''
@@ -50,6 +69,10 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
                 v = heading_meta.pop(k)
                 kv_str = yaml.dump({k: v}, **yaml_dump_kwargs).strip()
                 meta_str += '%s\n' % kv_str
+
+        for k in ignore_meta_in_heading:
+            if k in heading_meta:
+                heading_meta.pop(k)
 
         meta_str += yaml.dump(heading_meta, **yaml_dump_kwargs)
 
@@ -91,7 +114,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
             # merge meta
             for k, v in meta.items():
-                if k not in ignore_pdf_meta_keys and k not in note_meta:
+                if k not in ignore_keys_from_meta_info and k not in note_meta:
                     note_meta[k] = v
 
             self.add_default_meta(note_meta)
@@ -114,6 +137,9 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
             note_data['meta_str'] = new_meta_str
             note_data['content'] = self.clean_content(note_data['content'])
 
+            # TODO(jkyang) render ref list
+            note_data['render_ref_list'] = 'references' not in note_data['content'].lower()
+
             note_path = self.render_note_md(meta_key, note_data)
             assert note_path is not None
 
@@ -121,9 +147,6 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
         # add_missing_tag_map(tag_list)
         logger.info('%s notes saved from %s yaml.' % (cnt, meta_ir.name))
-
-    def gen_from_ref_yaml(self):
-        pass
 
     def should_skip(self, meta_key):
         # TODO(jkyang): add more logic here
@@ -134,7 +157,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
     def run(self, **kwargs):
         self.gen_from_meta_yaml(PdfMetaIR())
-        # self.gen_from_meta_yaml(PdfMetaIR())
+        self.gen_from_meta_yaml(RefMetaIR())
 
 
 pipe_runner_func = GenNotesMdPipe().run_all
