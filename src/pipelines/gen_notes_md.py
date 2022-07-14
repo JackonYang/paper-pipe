@@ -21,6 +21,12 @@ default_reading_status = 'TBD'
 
 
 class GenNotesMdPipe(BasePipeline, NoteMdIR):
+    meta_key_mappings = None
+
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.meta_key_mappings = MetaKeyMappings()
 
     def add_default_meta(self, note_meta):
         note_meta.setdefault('reading_status', default_reading_status)
@@ -71,9 +77,8 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         logger.info('%s notes saved from %s yaml.' % (cnt, meta_ir.name))
 
     def update_merge_mapping(self):
-        meta_key_mappings = MetaKeyMappings()
 
-        existed_cnt = meta_key_mappings.get_mapping_count()
+        existed_cnt = self.meta_key_mappings.get_mapping_count()
         scan_cnt = 0
 
         for note_path, note_data in self.iter_note_md():
@@ -86,18 +91,16 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
             key_from_filename = os.path.basename(note_path).replace('.md', '')
 
             if key_from_filename != key_from_meta:
-                meta_key_mappings.update_mapping(key_from_filename, key_from_meta)
+                self.meta_key_mappings.update_mapping(key_from_filename, key_from_meta)
 
-        new_cnt = meta_key_mappings.get_mapping_count()
+        new_cnt = self.meta_key_mappings.get_mapping_count()
         logger.info('%s scaned, %s new meta_key mappings to merge.' % (scan_cnt, new_cnt - existed_cnt))
 
-        meta_key_mappings.save()
+        self.meta_key_mappings.save()
 
     def merge_notes(self):
-        meta_key_mappings = MetaKeyMappings()
-
         merged = 0
-        for src, tar in meta_key_mappings.iter_mapping():
+        for src, tar in self.meta_key_mappings.iter_mapping():
 
             # already merged
             if not self.is_note_exists(src):
@@ -155,11 +158,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         logger.info('%s new notes mapping merged' % merged)
 
     def should_skip(self, meta_key):
-        # TODO(jkyang): add more logic here
-        mapping_tasks = {}
-        # mapping_tasks = meta_io.read_misc_info(meta_key_mapping_filename)
-
-        return meta_key in mapping_tasks
+        return meta_key in self.meta_key_mappings.mapping_dict
 
     def run(self, skip_gen_note_from_pdf=False, skip_gen_note_from_ref=False, **kwargs):
 
