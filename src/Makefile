@@ -7,9 +7,6 @@ CODE_ROOT?=.
 help:
 	cd $(CODE_ROOT) && $(PY) manage.py --help
 
-gen-pdf-notes:
-	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-notes
-
 gen-notes-md:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md
 
@@ -57,7 +54,7 @@ test:
 
 .PHONY: help
 .PHONY: paper-download collect-ref-meta
-.PHONY: gen-notes-md gen-pdf-meta gen-pdf-notes
+.PHONY: gen-notes-md gen-pdf-meta
 
 .PHONY: check-dup
 .PHONY: clean-deleted
