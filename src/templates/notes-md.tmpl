@@ -9,6 +9,12 @@
 # {{ meta.title }}
 {% endif -%}
 
+{%- if render_abstract %}
+## {{ abstract_title }}
+
+{{ abstract }}
+{% endif -%}
+
 {% if content %}
 {{ content }}
 {% endif -%}

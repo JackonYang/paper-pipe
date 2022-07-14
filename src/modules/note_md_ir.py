@@ -27,6 +27,7 @@ default_data = {
 
 ignore_meta_in_heading = [
     'references',
+    'paperAbstract',
 ]
 
 meta_keys_order = [
@@ -104,6 +105,21 @@ class NoteMdIR(object):
             )
         return str_list
 
+    def fill_abstract_info(self, data):
+        info_key = 'abstract'
+        info_meta_key = 'paperAbstract'
+        info_title = 'Abstract'
+
+        info_value = data['meta'].get(info_meta_key, '')
+        if len(info_value) == 0:
+            return
+
+        data['%s_title' % info_key] = info_title
+        query = '## %s' % info_title.lower()
+        data['render_%s' % info_key] = query not in data.get('content', '').lower()
+
+        data[info_key] = info_value.strip()
+
     def fill_paper_ref_info(self, data):
         refs = data['meta'].get('references', [])
         if len(refs) == 0:
@@ -111,7 +127,9 @@ class NoteMdIR(object):
 
         ref_title = 'Paper References'
         data['ref_title'] = ref_title
-        data['render_ref_list'] = ref_title.lower() not in data.get('content', '').lower()
+
+        query = '## %s' % ref_title.lower()
+        data['render_ref_list'] = query not in data.get('content', '').lower()
         data['ref_str_list'] = self.render_ref_list(refs)
 
     def is_render_h1(self, data):
@@ -137,6 +155,7 @@ class NoteMdIR(object):
         if pdf_relpath:
             data['pdf_path'] = os.path.join(self.get_relative_root(), pdf_relpath)
 
+        self.fill_abstract_info(data)
         self.fill_paper_ref_info(data)
 
         # last
