@@ -37,7 +37,7 @@ yaml_dump_kwargs = {
 default_reading_status = 'TBD'
 
 
-class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
+class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
     def add_default_meta(self, note_meta):
         note_meta.setdefault('reading_status', default_reading_status)
@@ -71,15 +71,15 @@ class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
 
         return content
 
-    def gen_from_pdf_yaml(self):
+    def gen_from_meta_yaml(self, meta_ir):
         tag_list = []
 
         cnt = 0
         relative_root = self.get_relative_root()
 
-        for pdf_meta_path, pdf_meta in self.iter_pdf_meta():
-            assert 'meta_key' in pdf_meta
-            meta_key = pdf_meta['meta_key']
+        for meta_path, meta in meta_ir.iter_meta():
+            assert 'meta_key' in meta
+            meta_key = meta['meta_key']
 
             if self.should_skip(meta_key):
                 continue
@@ -89,8 +89,8 @@ class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
             assert 'meta' in note_data
             note_meta = note_data['meta']
 
-            # merge pdf_meta
-            for k, v in pdf_meta.items():
+            # merge meta
+            for k, v in meta.items():
                 if k not in ignore_pdf_meta_keys and k not in note_meta:
                     note_meta[k] = v
 
@@ -106,7 +106,10 @@ class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
 
             new_meta_str = self.render_meta_str(note_meta)
 
-            note_data['pdf_path'] = os.path.join(relative_root, pdf_meta['pdf_relpath'])
+            pdf_relpath = meta.get('pdf_relpath')
+            if pdf_relpath:
+                note_data['pdf_path'] = os.path.join(relative_root, pdf_relpath)
+
             note_data['meta'] = note_meta
             note_data['meta_str'] = new_meta_str
             note_data['content'] = self.clean_content(note_data['content'])
@@ -117,7 +120,10 @@ class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
             cnt += 1
 
         # add_missing_tag_map(tag_list)
-        logger.info('%s notes saved from pdf yaml.' % cnt)
+        logger.info('%s notes saved from %s yaml.' % (cnt, meta_ir.name))
+
+    def gen_from_ref_yaml(self):
+        pass
 
     def should_skip(self, meta_key):
         # TODO(jkyang): add more logic here
@@ -127,7 +133,8 @@ class GenNotesMdPipe(BasePipeline, PdfMetaIR, NoteMdIR):
         return meta_key in mapping_tasks
 
     def run(self, **kwargs):
-        self.gen_from_pdf_yaml()
+        self.gen_from_meta_yaml(PdfMetaIR())
+        # self.gen_from_meta_yaml(PdfMetaIR())
 
 
 pipe_runner_func = GenNotesMdPipe().run_all
