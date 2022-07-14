@@ -25,6 +25,21 @@ class MetaKeyMappings(object):
         with open(self.mappping_file, 'r') as f:
             self.mapping_dict = yaml.safe_load(f)
 
+    def iter_mapping(self):
+        for k, v in self.mapping_dict.items():
+            yield k, self.get_new_name(v)
+
+    def get_new_name(self, name):
+        searched = [name]
+        while name in self.mapping_dict:
+            new_name = self.mapping_dict.get(name)
+            searched.append(new_name)
+            if new_name in searched:
+                raise Exception('Mapping Looped. %s' % ' -> '.join(searched))
+            name = new_name
+
+        return name
+
     def get_mapping_count(self):
         if not self.mapping_dict:
             return 0

@@ -16,9 +16,27 @@ from utils.files_api import get_file_list
 
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
 
+markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
+h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
+
+
 default_data = {
     'meta': {},
     'content': '',
+}
+
+ignore_meta_in_heading = [
+    'references',
+]
+
+meta_keys_order = [
+    'Alias',
+    'title',
+]
+
+yaml_dump_kwargs = {
+    'width': 9999,
+    'default_flow_style': False,
 }
 
 
@@ -31,15 +49,63 @@ class NoteMdIR(object):
     def get_note_path(self, meta_key):
         return os.path.join(self.note_dir, '%s.md' % meta_key)
 
+    def is_note_exists(self, meta_key):
+        return os.path.exists(self.get_note_path(meta_key))
+
     def get_note_file_list(self):
         return get_file_list(self.note_dir, '.md')
 
     def get_relative_root(self):
         return os.path.relpath(USER_DATA_ROOT, self.note_dir)
 
+    def render_meta_str(self, meta):
+        heading_meta = copy.deepcopy(meta)
+        meta_str = ''
+        for k in meta_keys_order:
+            if k in heading_meta:
+                v = heading_meta.pop(k)
+                kv_str = yaml.dump({k: v}, **yaml_dump_kwargs).strip()
+                meta_str += '%s\n' % kv_str
+
+        for k in ignore_meta_in_heading:
+            if k in heading_meta:
+                heading_meta.pop(k)
+
+        meta_str += yaml.dump(heading_meta, **yaml_dump_kwargs)
+
+        return meta_str.strip()
+
+    def clean_content(self, content, drop_h1_heading=False):
+        # TODO(jkyang): refactor this
+        if not content or not isinstance(content, str):
+            return ''
+
+        content = content.lstrip()
+
+        pdf_link, new_content = content.split('\n', 1)
+        if markdown_link_re.match(pdf_link):
+            content = new_content.lstrip()
+
+        if drop_h1_heading:
+            content = h1_heading_re.sub('', content).lstrip()
+
+        return content
+
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
         template_name = NOTE_TEMPLATE_NAME
+
+        meta = data['meta']
+
+        data['meta_str'] = self.render_meta_str(meta)
+        data['content'] = self.clean_content(data['content'])
+
+        pdf_relpath = meta.get('pdf_relpath')
+        if pdf_relpath:
+            data['pdf_path'] = os.path.join(self.get_relative_root(), pdf_relpath)
+
+        # TODO(jkyang) render ref list
+        data['render_ref_list'] = 'references' not in data['content'].lower()
 
         note_path = self.get_note_path(meta_key)
         env = Environment(
@@ -69,6 +135,14 @@ class NoteMdIR(object):
             content = fr.read()
 
         return self.split_content_meta(content)
+
+    def mv_note(self, src, tar):
+        src_file = self.get_note_path(src)
+        tar_file = self.get_note_path(tar)
+        return os.rename(src_file, tar_file)
+
+    def rm_note(self, meta_key):
+        os.remove(self.get_note_path(meta_key))
 
     def split_content_meta(self, content):
 

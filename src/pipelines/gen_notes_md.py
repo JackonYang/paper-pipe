@@ -1,6 +1,3 @@
-import re
-import yaml
-import copy
 import os
 
 from .base_pipeline import BasePipeline
@@ -20,26 +17,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
-title_escape_re = re.compile(r'\s*(?:[":]+\s*)+')
-
-h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
-
-ignore_meta_in_heading = [
-    'references',
-]
-
-meta_keys_order = [
-    'Alias',
-    'title',
-]
-
-yaml_dump_kwargs = {
-    'width': 9999,
-    'default_flow_style': False,
-}
-
-
 default_reading_status = 'TBD'
 
 
@@ -51,44 +28,10 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         if 'tags' not in note_meta:
             note_meta['tags'] = [REF_DEFAULT_TAG, TYPE_DEFAULT_TAG]
 
-    def render_meta_str(self, meta):
-        heading_meta = copy.deepcopy(meta)
-        meta_str = ''
-        for k in meta_keys_order:
-            if k in heading_meta:
-                v = heading_meta.pop(k)
-                kv_str = yaml.dump({k: v}, **yaml_dump_kwargs).strip()
-                meta_str += '%s\n' % kv_str
-
-        for k in ignore_meta_in_heading:
-            if k in heading_meta:
-                heading_meta.pop(k)
-
-        meta_str += yaml.dump(heading_meta, **yaml_dump_kwargs)
-
-        return meta_str.strip()
-
-    def clean_content(self, content, drop_h1_heading=False):
-        # TODO(jkyang): refactor this
-        if not content or not isinstance(content, str):
-            return ''
-
-        content = content.lstrip()
-
-        pdf_link, new_content = content.split('\n', 1)
-        if markdown_link_re.match(pdf_link):
-            content = new_content.lstrip()
-
-        if drop_h1_heading:
-            content = h1_heading_re.sub('', content).lstrip()
-
-        return content
-
     def gen_from_meta_yaml(self, meta_ir):
         tag_list = []
 
         cnt = 0
-        relative_root = self.get_relative_root()
 
         for meta_path, meta in meta_ir.iter_meta():
             assert 'meta_key' in meta
@@ -117,18 +60,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
                 if t not in tag_list:
                     tag_list.append(t)
 
-            new_meta_str = self.render_meta_str(note_meta)
-
-            pdf_relpath = meta.get('pdf_relpath')
-            if pdf_relpath:
-                note_data['pdf_path'] = os.path.join(relative_root, pdf_relpath)
-
             note_data['meta'] = note_meta
-            note_data['meta_str'] = new_meta_str
-            note_data['content'] = self.clean_content(note_data['content'])
-
-            # TODO(jkyang) render ref list
-            note_data['render_ref_list'] = 'references' not in note_data['content'].lower()
 
             note_path = self.render_note_md(meta_key, note_data)
             assert note_path is not None
@@ -161,6 +93,67 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
         meta_key_mappings.save()
 
+    def merge_notes(self):
+        meta_key_mappings = MetaKeyMappings()
+
+        merged = 0
+        for src, tar in meta_key_mappings.iter_mapping():
+
+            # already merged
+            if not self.is_note_exists(src):
+                continue
+
+            if not self.is_note_exists(tar):
+                self.mv_note(src, tar)
+                merged += 1
+                continue
+
+            src_data = self.load_md_if_exists(src)
+            tar_data = self.load_md_if_exists(tar)
+
+            # merge. use value in tar if value conflict with src
+            merged_meta = {}
+            # special keys to merge
+            tags = []
+            if 'meta' in src_data:
+                tags.extend(src_data['meta'].get('tags', []))
+                for k, v in src_data['meta'].items():
+                    merged_meta[k] = v
+
+            if 'meta' in tar_data:
+                tags.extend(tar_data['meta'].get('tags', []))
+                for k, v in tar_data['meta'].items():
+                    if v is not None:
+                        merged_meta[k] = v
+
+            if len(tags) > 0:
+                merged_meta['tags'] = list(set(tags))
+
+            # merge content
+            # TODO(jkyang) fix the logic
+            # merged_content = '# %s\n\n' % title
+            merged_content = ''
+
+            if 'content' in src_data:
+                merged_content += self.clean_content(src_data['content'], drop_h1_heading=True)
+
+            merged_content = merged_content.rstrip() + '\n\n'
+            if 'content' in tar_data:
+                merged_content += self.clean_content(tar_data['content'], drop_h1_heading=True)
+
+            # merged data
+            merged_data = {
+                'meta': merged_meta,
+                'content': merged_content,
+            }
+
+            note_path = self.render_note_md(tar, merged_data)
+            assert note_path
+            self.rm_note(src)
+            merged += 1
+
+        logger.info('%s new notes mapping merged' % merged)
+
     def should_skip(self, meta_key):
         # TODO(jkyang): add more logic here
         mapping_tasks = {}
@@ -172,6 +165,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         # self.gen_from_meta_yaml(PdfMetaIR())
         # self.gen_from_meta_yaml(RefMetaIR())
         self.update_merge_mapping()
+        self.merge_notes()
 
 
 pipe_runner_func = GenNotesMdPipe().run_all
