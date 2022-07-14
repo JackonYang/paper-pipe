@@ -129,6 +129,10 @@ def download_seed(seed_url):
 
 
 def main():
+
+    if not os.path.exists(CRAWLED_REF_INFO_DIR):
+        os.makedirs(CRAWLED_REF_INFO_DIR)
+
     orig_ref_file_cnt = len(os.listdir(CRAWLED_REF_INFO_DIR))
 
     list_file = os.path.join(CUR_DIR, 'url.list')
