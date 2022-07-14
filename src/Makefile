@@ -10,6 +10,9 @@ help:
 gen-notes-md:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md
 
+merge-notes:
+	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-pdf --skip-gen-note-from-ref
+
 gen-pdf-meta:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-meta
 
@@ -54,7 +57,7 @@ test:
 
 .PHONY: help
 .PHONY: paper-download collect-ref-meta
-.PHONY: gen-notes-md gen-pdf-meta
+.PHONY: gen-notes-md gen-pdf-meta merge-notes
 
 .PHONY: check-dup
 .PHONY: clean-deleted

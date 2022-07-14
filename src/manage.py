@@ -18,6 +18,11 @@ pipeline_choices = [
     f[:-3].replace('_', '-') for f in os.listdir(os.path.join(CURRENT_DIR, pipeline_dirname)) if f.endswith('.py') and f not in ignored_pipe_names
 ]
 
+sub_steps = [
+    'gen_note_from_pdf',
+    'gen_note_from_ref',
+]
+
 
 def default_pipe_runner_func(**kwargs):
     print('pipe runner is not defined. user args: %s' % json.dumps(kwargs, indent=4))
@@ -52,6 +57,12 @@ def init_argparser():
         default=None,
         help='path to your job_config.ini file')
 
+    for step in sub_steps:
+        key = 'skip_%s' % step.replace('-', '_')
+        name = '--%s' % key.replace('_', '-')
+        parser.add_argument(
+            name, dest=key, action='store_true', default=False)
+
     return parser
 
 
@@ -69,6 +80,10 @@ def run_job(args):
         kwargs = {}
 
     # update kwargs if specified in command line args
+    # save args.skip_* to kwargs
+    for step in sub_steps:
+        key = 'skip_%s' % step.replace('-', '_')
+        kwargs[key] = getattr(args, key)
 
     # run the pipeline
     err_no = pipe_runner_func(**kwargs)

@@ -161,9 +161,18 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
         return meta_key in mapping_tasks
 
-    def run(self, **kwargs):
-        # self.gen_from_meta_yaml(PdfMetaIR())
-        # self.gen_from_meta_yaml(RefMetaIR())
+    def run(self, skip_gen_note_from_pdf=False, skip_gen_note_from_ref=False, **kwargs):
+
+        if skip_gen_note_from_pdf:
+            logger.info('skip generating notes from pdf')
+        else:
+            self.gen_from_meta_yaml(PdfMetaIR())
+
+        if skip_gen_note_from_ref:
+            logger.info('skip generating notes from ref')
+        else:
+            self.gen_from_meta_yaml(RefMetaIR())
+
         self.update_merge_mapping()
         self.merge_notes()
 
