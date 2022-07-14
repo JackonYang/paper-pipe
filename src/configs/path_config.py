@@ -16,6 +16,9 @@ NOTE_TEMPLATE_NAME = 'notes-md.tmpl'
 EXTRA_DATA_ROOT = os.path.join(USER_DATA_ROOT, 'paper-extra-data')
 CRAWLER_CACHE_ROOT = os.path.join(USER_DATA_ROOT, 'paper-crawler-cache')
 
+# notes config
+META_KEY_MAPPING_FILE = os.path.join(EXTRA_DATA_ROOT, 'meta-key-mapping.yaml')
+
 # reference data dir
 # unique dir for each crawler
 CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR = os.path.join(CRAWLER_CACHE_ROOT, 'ref-info-semantic-scholar')

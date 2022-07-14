@@ -12,6 +12,8 @@ from configs import (
     USER_DATA_ROOT,
 )
 
+from utils.files_api import get_file_list
+
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
 
 default_data = {
@@ -21,11 +23,19 @@ default_data = {
 
 
 class NoteMdIR(object):
+    note_dir = None
+
+    def __init__(self):
+        self.note_dir = PAPER_NOTES_DIR
+
     def get_note_path(self, meta_key):
-        return os.path.join(PAPER_NOTES_DIR, '%s.md' % meta_key)
+        return os.path.join(self.note_dir, '%s.md' % meta_key)
+
+    def get_note_file_list(self):
+        return get_file_list(self.note_dir, '.md')
 
     def get_relative_root(self):
-        return os.path.relpath(USER_DATA_ROOT, PAPER_NOTES_DIR)
+        return os.path.relpath(USER_DATA_ROOT, self.note_dir)
 
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
@@ -73,3 +83,7 @@ class NoteMdIR(object):
             'content': content.strip(),
         }
         return data
+
+    def iter_note_md(self):
+        for note_path in self.get_note_file_list():
+            yield note_path, self.load_note(note_path)

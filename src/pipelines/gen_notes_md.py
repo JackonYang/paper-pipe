@@ -8,6 +8,8 @@ from modules.pdf_meta_ir import PdfMetaIR
 from modules.ref_meta_ir import RefMetaIR
 from modules.note_md_ir import NoteMdIR
 
+from modules.meta_key_mappings import MetaKeyMappings
+
 
 from configs import (
     REF_DEFAULT_TAG,
@@ -136,6 +138,29 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         # add_missing_tag_map(tag_list)
         logger.info('%s notes saved from %s yaml.' % (cnt, meta_ir.name))
 
+    def update_merge_mapping(self):
+        meta_key_mappings = MetaKeyMappings()
+
+        existed_cnt = meta_key_mappings.get_mapping_count()
+        scan_cnt = 0
+
+        for note_path, note_data in self.iter_note_md():
+            if 'meta' not in note_data or 'meta_key' not in note_data['meta']:
+                continue
+
+            scan_cnt += 1
+
+            key_from_meta = note_data['meta']['meta_key']
+            key_from_filename = os.path.basename(note_path).replace('.md', '')
+
+            if key_from_filename != key_from_meta:
+                meta_key_mappings.update_mapping(key_from_filename, key_from_meta)
+
+        new_cnt = meta_key_mappings.get_mapping_count()
+        logger.info('%s scaned, %s new meta_key mappings to merge.' % (scan_cnt, new_cnt - existed_cnt))
+
+        meta_key_mappings.save()
+
     def should_skip(self, meta_key):
         # TODO(jkyang): add more logic here
         mapping_tasks = {}
@@ -144,8 +169,9 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         return meta_key in mapping_tasks
 
     def run(self, **kwargs):
-        self.gen_from_meta_yaml(PdfMetaIR())
-        self.gen_from_meta_yaml(RefMetaIR())
+        # self.gen_from_meta_yaml(PdfMetaIR())
+        # self.gen_from_meta_yaml(RefMetaIR())
+        self.update_merge_mapping()
 
 
 pipe_runner_func = GenNotesMdPipe().run_all
