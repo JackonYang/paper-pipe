@@ -91,6 +91,39 @@ class NoteMdIR(object):
 
         return content
 
+    def render_ref_list(self, ref_list):
+        str_list = []
+        for idx, ref_info in enumerate(ref_list):
+            if ref_info['show_ref_link']:
+                title_str = '[%s](%s)' % (ref_info['title'], ref_info['meta_key'])
+            else:
+                title_str = ref_info['title'].strip('][')
+
+            str_list.append(
+                '%s. %s' % (idx+1, title_str)
+            )
+        return str_list
+
+    def fill_paper_ref_info(self, data):
+        refs = data['meta'].get('references', [])
+        if len(refs) == 0:
+            return
+
+        ref_title = 'Paper References'
+        data['ref_title'] = ref_title
+        data['render_ref_list'] = ref_title.lower() not in data.get('content', '').lower()
+        data['ref_str_list'] = self.render_ref_list(refs)
+
+    def is_render_h1(self, data):
+        content = data.get('content')
+        if content and not h1_heading_re.match(content):
+            return True
+
+        if data.get('render_ref_list'):
+            return True
+
+        return False
+
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
         template_name = NOTE_TEMPLATE_NAME
@@ -104,8 +137,10 @@ class NoteMdIR(object):
         if pdf_relpath:
             data['pdf_path'] = os.path.join(self.get_relative_root(), pdf_relpath)
 
-        # TODO(jkyang) render ref list
-        data['render_ref_list'] = 'references' not in data['content'].lower()
+        self.fill_paper_ref_info(data)
+
+        # last
+        data['render_h1'] = self.is_render_h1(data)
 
         note_path = self.get_note_path(meta_key)
         env = Environment(

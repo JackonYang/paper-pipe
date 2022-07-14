@@ -10,6 +10,7 @@ ignore_keys = [
     'url',
     'badges',
     'numCiting',
+    'paperAbstract',
 ]
 
 
