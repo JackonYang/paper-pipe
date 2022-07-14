@@ -18,8 +18,10 @@ gen-pdf-meta:
 
 paper-download:
 	cd $(CODE_ROOT) && $(PY) manage.py paper_download
+	make collect-ref-meta
 
-
+collect-ref-meta:
+	cd $(CODE_ROOT) && $(PY) manage.py collect_ref_meta
 
 # ----
 
@@ -54,7 +56,7 @@ test:
 	PYTHONPATH=$(CODE_ROOT) pytest --cov $(CODE_ROOT) --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
 
 .PHONY: help
-.PHONY: paper-download
+.PHONY: paper-download collect-ref-meta
 .PHONY: gen-notes-md gen-pdf-meta gen-pdf-notes
 
 .PHONY: check-dup

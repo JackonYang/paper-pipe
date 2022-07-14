@@ -220,8 +220,8 @@ def main():
     for pid, info in paper_info.items():
         info['references'] = paper_ref_map[pid]
 
-    logger.info('final paper cnt: %s, raw paper cnt: %s' % (
-        len(paper_info), len(raw_paper_info)))
+    logger.info('final paper cnt: %s, raw paper cnt: %s. saved at: %s' % (
+        len(paper_info), len(raw_paper_info), REF_META_DIR))
     save_yaml(paper_info, REF_META_DIR)
 
 
