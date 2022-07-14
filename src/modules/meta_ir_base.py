@@ -12,6 +12,7 @@ from utils.files_api import get_file_list
 class MetaIRBase(object):
     name = None
     meta_dir = None
+    ignore_keys = None
 
     def get_meta_path(self, meta_key):
         return os.path.join(self.meta_dir, '%s.yaml' % meta_key)
@@ -38,3 +39,9 @@ class MetaIRBase(object):
             with open(meta_path, 'r') as f:
                 meta = yaml.safe_load(f)
             yield meta_path, meta
+
+    def is_ignore_key(self, key):
+        if not self.ignore_keys:
+            return False
+
+        return key in self.ignore_keys

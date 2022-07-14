@@ -11,11 +11,19 @@ from configs import (
 
 from utils.files_api import get_file_list
 
+ignore_keys = [
+    'raw_filename',
+    'raw_ext',
+    'content_md5',
+    'filesize',
+]
+
 
 class PdfMetaIR(MetaIRBase):
     def __init__(self):
         self.meta_dir = PDF_META_DIR
         self.name = 'pdf_meta'
+        self.ignore_keys = ignore_keys
 
     def get_pdf_abs_path(self, pdf_relpath):
         return os.path.join(USER_DATA_ROOT, unquote(pdf_relpath))

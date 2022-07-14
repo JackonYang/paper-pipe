@@ -23,18 +23,6 @@ title_escape_re = re.compile(r'\s*(?:[":]+\s*)+')
 
 h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
 
-ignore_keys_from_meta_info = [
-    'raw_filename',
-    'raw_ext',
-    'content_md5',
-    'filesize',
-    'corpusId',
-    'slug',
-    'url',
-    'badges',
-    'numCiting',
-]
-
 ignore_meta_in_heading = [
     'references',
 ]
@@ -114,7 +102,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
             # merge meta
             for k, v in meta.items():
-                if k not in ignore_keys_from_meta_info and k not in note_meta:
+                if not meta_ir.is_ignore_key(k) and k not in note_meta:
                     note_meta[k] = v
 
             self.add_default_meta(note_meta)
