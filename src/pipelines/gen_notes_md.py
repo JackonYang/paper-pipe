@@ -111,8 +111,8 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
                 merged += 1
                 continue
 
-            src_data = self.load_md_if_exists(src)
-            tar_data = self.load_md_if_exists(tar)
+            src_data = self.load_note_if_exists(src)
+            tar_data = self.load_note_if_exists(tar)
 
             # merge. use value in tar if value conflict with src
             merged_meta = {}
