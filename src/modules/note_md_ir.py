@@ -16,7 +16,8 @@ from utils.files_api import get_file_list
 
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
 
-markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
+# markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
+pdf_link_re = re.compile(r'\[(.*?pdf.*?)\]\((.*?)\)')
 h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
 
 
@@ -72,18 +73,14 @@ class NoteMdIR(object):
         return meta_str.strip()
 
     def clean_content(self, content, drop_h1_heading=False):
-        # TODO(jkyang): refactor this
-        if not content or not isinstance(content, str):
-            return ''
-
-        content = content.lstrip()
-
-        pdf_link, new_content = content.split('\n', 1)
-        if markdown_link_re.match(pdf_link):
-            content = new_content.lstrip()
-
+        # drop pdf link
+        content = pdf_link_re.sub('', content)
+        # drop h1 heading
         if drop_h1_heading:
-            content = h1_heading_re.sub('', content).lstrip()
+            content = h1_heading_re.sub('', content)
+
+        # drop leading space
+        content = content.lstrip()
 
         return content
 
