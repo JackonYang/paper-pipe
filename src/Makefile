@@ -7,11 +7,19 @@ CODE_ROOT?=.
 help:
 	cd $(CODE_ROOT) && $(PY) manage.py --help
 
+# ---- main steps ------
+
+paper-download:
+	cd $(CODE_ROOT) && $(PY) manage.py paper_download
+
+gen-meta-yaml:
+	make gen-pdf-meta
+	make gen-ref-meta
+
 gen-notes-md:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md
 
-merge-notes:
-	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-pdf --skip-gen-note-from-ref
+# ---- micro steps ----
 
 gen-pdf-meta:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-meta
@@ -19,15 +27,14 @@ gen-pdf-meta:
 gen-pdf-notes:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-ref
 
+gen-ref-meta:
+	cd $(CODE_ROOT) && $(PY) manage.py gen_ref_meta
+
 gen-ref-notes:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-pdf
 
-paper-download:
-	cd $(CODE_ROOT) && $(PY) manage.py paper_download
-	make collect-ref-meta
-
-collect-ref-meta:
-	cd $(CODE_ROOT) && $(PY) manage.py collect_ref_meta
+merge-notes:
+	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-pdf --skip-gen-note-from-ref
 
 # ----
 
@@ -36,9 +43,6 @@ check-dup:
 
 clean-deleted:
 	cd $(CODE_ROOT) && bash scripts/clean_deleted_data.sh
-
-gen-readme:
-	cd code && python manage.py update-readme
 
 dvc-add:
 	dvc add pdfs/*.pdf
@@ -62,8 +66,14 @@ test:
 	PYTHONPATH=$(CODE_ROOT) pytest --cov $(CODE_ROOT) --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
 
 .PHONY: help
-.PHONY: paper-download collect-ref-meta
-.PHONY: gen-notes-md gen-pdf-meta merge-notes
+
+.PHONY: paper-download
+.PHONY: gen-meta-yaml
+.PHONY: gen-notes-md
+
+.PHONY: gen-ref-meta gen-ref-notes
+.PHONY: gen-pdf-meta gen-pdf-notes
+.PHONY: merge-notes
 
 .PHONY: check-dup
 .PHONY: clean-deleted
