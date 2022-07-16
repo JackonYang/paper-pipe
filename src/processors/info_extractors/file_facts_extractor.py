@@ -5,22 +5,19 @@ from configs import (
     USER_DATA_ROOT,
 )
 
+from modules.key_generator import gen_meta_key
+
 from utils.files_api import (
     md5_for_file,
     getSizeInNiceString,
 )
 
 
-def filename2key(filename):
-    key = filename.replace(' ', '-')
-    return key
-
-
 def extract_info(pdf_path, **kwargs):
     basename = os.path.basename(pdf_path)
     raw_filename, ext = os.path.splitext(basename)
 
-    meta_key = filename2key(raw_filename)
+    meta_key = gen_meta_key(raw_filename)
     filesize = os.path.getsize(pdf_path)
 
     info = {

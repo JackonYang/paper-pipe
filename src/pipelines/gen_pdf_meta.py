@@ -34,7 +34,7 @@ class GenPdfMetaPipe(BasePipeline, PdfMetaIR):
 
     def clean_deleted_meta(self):
         pdf_path_key = 'pdf_relpath'
-        for meta_path, meta in self.iter_pdf_meta():
+        for meta_path, meta in self.iter_meta():
 
             assert pdf_path_key in meta
             pdf_path = self.get_pdf_abs_path(meta[pdf_path_key])

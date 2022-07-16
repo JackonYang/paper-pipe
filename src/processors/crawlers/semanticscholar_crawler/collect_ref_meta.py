@@ -8,6 +8,8 @@ import re
 import yaml
 import copy
 
+from modules.key_generator import gen_meta_key
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -15,7 +17,6 @@ logger = logging.getLogger(__name__)
 
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
 
-title_format_re = re.compile(r'[\W\s]+')
 multi_space_re = re.compile(r' \s+')
 
 
@@ -123,11 +124,6 @@ def is_drop_by_title(title, meta_key, cited_cnt):
         logger.warning('error title: %s' % title)
 
     return False
-
-
-def gen_meta_key(title, year):
-    t = title_format_re.sub('-', title.lower()).strip(' -')
-    return '%s-%s' % (year, t)
 
 
 def add_info_by_ref(ref_info, new_info):
