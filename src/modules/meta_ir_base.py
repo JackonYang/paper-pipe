@@ -1,5 +1,4 @@
 import os
-import yaml
 from urllib.parse import quote
 
 from configs import (
@@ -7,6 +6,7 @@ from configs import (
 )
 
 from utils.files_api import get_file_list
+from . import meta_io
 
 
 class MetaIRBase(object):
@@ -32,12 +32,12 @@ class MetaIRBase(object):
             os.makedirs(dirnpath)
 
         with open(meta_path, 'w') as fw:
-            yaml.dump(meta_data, fw)
+            meta_io.dump(meta_data, fw)
 
     def iter_meta(self):
         for meta_path in self.get_meta_file_list():
             with open(meta_path, 'r') as f:
-                meta = yaml.safe_load(f)
+                meta = meta_io.safe_load(f)
             yield meta_path, meta
 
     def is_ignore_key(self, key):

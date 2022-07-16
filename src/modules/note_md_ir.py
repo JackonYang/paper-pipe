@@ -1,6 +1,5 @@
 import os
 import re
-import yaml
 import copy
 import codecs
 from jinja2 import Environment, FileSystemLoader
@@ -12,6 +11,7 @@ from configs import (
     USER_DATA_ROOT,
 )
 
+from . import meta_io
 from utils.files_api import get_file_list
 
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
@@ -34,11 +34,6 @@ meta_keys_order = [
     'Alias',
     'title',
 ]
-
-yaml_dump_kwargs = {
-    'width': 9999,
-    'default_flow_style': False,
-}
 
 
 class NoteMdIR(object):
@@ -65,14 +60,14 @@ class NoteMdIR(object):
         for k in meta_keys_order:
             if k in heading_meta:
                 v = heading_meta.pop(k)
-                kv_str = yaml.dump({k: v}, **yaml_dump_kwargs).strip()
+                kv_str = meta_io.dump({k: v}).strip()
                 meta_str += '%s\n' % kv_str
 
         for k in ignore_meta_in_heading:
             if k in heading_meta:
                 heading_meta.pop(k)
 
-        meta_str += yaml.dump(heading_meta, **yaml_dump_kwargs)
+        meta_str += meta_io.dump(heading_meta)
 
         return meta_str.strip()
 
@@ -204,7 +199,7 @@ class NoteMdIR(object):
 
         if META_BOUNDARY.match(content):
             _, fm, content = META_BOUNDARY.split(content, 2)
-            meta = yaml.safe_load(fm.strip()) or {}
+            meta = meta_io.safe_load(fm.strip()) or {}
 
         data = {
             'meta': meta,
