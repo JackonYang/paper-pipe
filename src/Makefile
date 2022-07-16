@@ -16,6 +16,12 @@ merge-notes:
 gen-pdf-meta:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-pdf-meta
 
+gen-pdf-notes:
+	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-ref
+
+gen-ref-notes:
+	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md --skip-gen-note-from-pdf
+
 paper-download:
 	cd $(CODE_ROOT) && $(PY) manage.py paper_download
 	make collect-ref-meta

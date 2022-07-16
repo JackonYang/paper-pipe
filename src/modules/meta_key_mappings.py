@@ -1,5 +1,5 @@
 import os
-import yaml
+from modules import meta_io
 
 from configs import (
     META_KEY_MAPPING_FILE,
@@ -23,7 +23,7 @@ class MetaKeyMappings(object):
             return
 
         with open(self.mappping_file, 'r') as f:
-            self.mapping_dict = yaml.safe_load(f)
+            self.mapping_dict = meta_io.safe_load(f)
 
     def iter_mapping(self):
         for k, v in self.mapping_dict.items():
@@ -62,4 +62,4 @@ class MetaKeyMappings(object):
             os.makedirs(dirnpath)
 
         with open(self.mappping_file, 'w') as fw:
-            yaml.dump(self.mapping_dict, fw)
+            meta_io.dump(self.mapping_dict, fw)

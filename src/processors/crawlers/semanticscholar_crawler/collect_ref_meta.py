@@ -5,10 +5,10 @@ from configs import (
 import json
 import os
 import re
-import yaml
 import copy
 
 from modules.key_generator import gen_meta_key
+from modules import meta_io
 
 import logging
 
@@ -55,7 +55,7 @@ def save_yaml(paper_info, dirpath):
 
     for pid, info in paper_info.items():
         with open(os.path.join(dirpath, '%s.yaml' % pid), 'w') as f:
-            yaml.safe_dump(info, f)
+            meta_io.dump(info, f)
 
 
 def clean_ref(old_ref):
