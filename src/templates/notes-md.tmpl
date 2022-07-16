@@ -1,3 +1,4 @@
+{#- https://ttl255.com/jinja2-tutorial-part-3-whitespace-control/ -#}
 ---
 {{ meta_str }}
 ---
@@ -6,22 +7,12 @@
 {% endif -%}
 
 {%- if render_h1 %}
-# {{ meta.title }}
+# {{ h1_heading }}
 {% endif -%}
 
-{%- if render_abstract %}
-## {{ abstract_title }}
-
-{{ abstract }}
-{% endif -%}
-
-{% if content %}
-{{ content }}
-{% endif -%}
-
-{%- if render_ref_list %}
-## {{ ref_title }}
-{% for ref_str in ref_str_list %}
-{{ ref_str }}
-{%- endfor %}
-{% endif -%}
+{%- for sec in h2_sections -%}
+{%- if sec.title %}
+## {{ sec.title }}
+{% endif %}
+{{ sec.value }}
+{% endfor -%}

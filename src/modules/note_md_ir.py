@@ -11,30 +11,22 @@ from configs import (
     USER_DATA_ROOT,
 )
 
-from . import meta_io
 from utils.files_api import get_file_list
+
+from modules.note_ast import NoteAst
+from modules import meta_io
+
 
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
 
 # markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
 pdf_link_re = re.compile(r'\[(.*?pdf.*?)\]\((.*?)\)')
-h1_heading_re = re.compile(r'^# .*$', re.MULTILINE)
-
+h1_heading_re = re.compile(r'^# (.*)$', re.MULTILINE)
 
 default_data = {
     'meta': {},
     'content': '',
 }
-
-ignore_meta_in_heading = [
-    'references',
-    'paperAbstract',
-]
-
-meta_keys_order = [
-    'Alias',
-    'title',
-]
 
 
 class NoteMdIR(object):
@@ -42,6 +34,7 @@ class NoteMdIR(object):
 
     def __init__(self):
         self.note_dir = PAPER_NOTES_DIR
+        self.note_ast = NoteAst()
 
     def get_note_path(self, meta_key):
         return os.path.join(self.note_dir, '%s.md' % meta_key)
@@ -55,27 +48,16 @@ class NoteMdIR(object):
     def get_relative_root(self):
         return os.path.relpath(USER_DATA_ROOT, self.note_dir)
 
-    def render_meta_str(self, meta):
-        heading_meta = copy.deepcopy(meta)
+    def get_h1(self, data):
+        content = data['content']
+        m = h1_heading_re.match(content)
+        if m:
+            return m.group(1).strip()
 
-        # keep order consistent between pipelines
-        if 'tags' in heading_meta:
-            heading_meta['tags'] = sorted(heading_meta['tags'])
+        if 'title' in data['meta']:
+            return data['meta']['title'].strip()
 
-        meta_str = ''
-        for k in meta_keys_order:
-            if k in heading_meta:
-                v = heading_meta.pop(k)
-                kv_str = meta_io.dump({k: v}).strip()
-                meta_str += '%s\n' % kv_str
-
-        for k in ignore_meta_in_heading:
-            if k in heading_meta:
-                heading_meta.pop(k)
-
-        meta_str += meta_io.dump(heading_meta)
-
-        return meta_str.strip()
+        return ''
 
     def clean_content(self, content, drop_h1_heading=False):
         # drop pdf link
@@ -89,55 +71,11 @@ class NoteMdIR(object):
 
         return content
 
-    def render_ref_list(self, ref_list):
-        str_list = []
-        for idx, ref_info in enumerate(ref_list):
-            if ref_info['show_ref_link']:
-                title_str = '[%s](%s)' % (ref_info['title'], ref_info['meta_key'])
-            else:
-                title_str = ref_info['title'].strip('][')
-
-            str_list.append(
-                '%s. %s' % (idx+1, title_str)
-            )
-        return str_list
-
-    def fill_abstract_info(self, data):
-        info_key = 'abstract'
-        info_meta_key = 'paperAbstract'
-        info_title = 'Abstract'
-
-        info_value = data['meta'].get(info_meta_key, '')
-        if len(info_value) == 0:
-            return
-
-        data['%s_title' % info_key] = info_title
-        query = '## %s' % info_title.lower()
-        data['render_%s' % info_key] = query not in data.get('content', '').lower()
-
-        data[info_key] = info_value.strip()
-
-    def fill_paper_ref_info(self, data):
-        refs = data['meta'].get('references', [])
-        if len(refs) == 0:
-            return
-
-        ref_title = 'Paper References'
-        data['ref_title'] = ref_title
-
-        query = '## %s' % ref_title.lower()
-        data['render_ref_list'] = query not in data.get('content', '').lower()
-        data['ref_str_list'] = self.render_ref_list(refs)
-
     def is_render_h1(self, data):
-        content = data.get('content')
-        if content and not h1_heading_re.match(content):
-            return True
+        has_content = len(data['h2_sections']) > 0
+        has_h1 = len(data.get('h1_heading', '')) > 0
 
-        if data.get('render_ref_list'):
-            return True
-
-        return False
+        return has_content and has_h1
 
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
@@ -145,19 +83,22 @@ class NoteMdIR(object):
 
         meta = data['meta']
 
-        data['meta_str'] = self.render_meta_str(meta)
-        data['content'] = self.clean_content(data['content'])
+        # pre-processing
+        data['h1_heading'] = self.get_h1(data)
+        data['content'] = self.clean_content(data['content'], drop_h1_heading=True)
 
         pdf_relpath = meta.get('pdf_relpath')
         if pdf_relpath:
             data['pdf_path'] = os.path.join(self.get_relative_root(), pdf_relpath)
 
-        self.fill_abstract_info(data)
-        self.fill_paper_ref_info(data)
+        # processing
+        data['meta_str'] = self.note_ast.render_meta(meta)
+        data['h2_sections'] = self.note_ast.gen_h2_sections(data)
 
-        # last
+        # post-processing
         data['render_h1'] = self.is_render_h1(data)
 
+        # render
         note_path = self.get_note_path(meta_key)
         env = Environment(
             loader=FileSystemLoader(template_dir),
