@@ -57,6 +57,11 @@ class NoteMdIR(object):
 
     def render_meta_str(self, meta):
         heading_meta = copy.deepcopy(meta)
+
+        # keep order consistent between pipelines
+        if 'tags' in heading_meta:
+            heading_meta['tags'] = sorted(heading_meta['tags'])
+
         meta_str = ''
         for k in meta_keys_order:
             if k in heading_meta:
