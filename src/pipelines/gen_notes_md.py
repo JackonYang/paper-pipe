@@ -1,4 +1,5 @@
 import os
+import copy
 
 from .base_pipeline import BasePipeline
 from modules.pdf_meta_ir import PdfMetaIR
@@ -114,40 +115,35 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
             src_data = self.load_note_if_exists(src)
             tar_data = self.load_note_if_exists(tar)
 
-            # merge. use value in tar if value conflict with src
-            merged_meta = {}
-            # special keys to merge
-            tags = []
-            if 'meta' in src_data:
-                tags.extend(src_data['meta'].get('tags', []))
-                for k, v in src_data['meta'].items():
+            # set default to avoid exceptions
+            tar_data.setdefault('meta', {})
+            tar_data.setdefault('content', '')
+            src_data.setdefault('meta', {})
+            src_data.setdefault('content', '')
+
+            # merge meta info
+            # use value in tar if value conflict with src
+            merged_meta = copy.deepcopy(tar_data['meta'])
+            for k, v in src_data['meta'].items():
+                if k not in merged_meta and v is not None:
                     merged_meta[k] = v
 
-            if 'meta' in tar_data:
-                tags.extend(tar_data['meta'].get('tags', []))
-                for k, v in tar_data['meta'].items():
-                    if v is not None:
-                        merged_meta[k] = v
-
+            # special keys to merge
+            tags = tar_data['meta'].get('tags', []) + src_data['meta'].get('tags', [])
             if len(tags) > 0:
                 merged_meta['tags'] = list(set(tags))
 
             # merge content
-            # TODO(jkyang) fix the logic
-            # merged_content = '# %s\n\n' % title
-            merged_content = ''
-
-            if 'content' in src_data:
-                merged_content += self.clean_content(src_data['content'], drop_h1_heading=True)
-
-            merged_content = merged_content.rstrip() + '\n\n'
-            if 'content' in tar_data:
-                merged_content += self.clean_content(tar_data['content'], drop_h1_heading=True)
+            content_list = [
+                self.clean_content(src_data['content'], drop_h1_heading=True),
+                self.clean_content(tar_data['content'], drop_h1_heading=True),
+            ]
+            merged_content = '\n\n'.join([i for i in content_list if i is not None and len(i) > 0])
 
             # merged data
             merged_data = {
                 'meta': merged_meta,
-                'content': merged_content,
+                'content': merged_content.strip(),
             }
 
             note_path = self.render_note_md(tar, merged_data)
