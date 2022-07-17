@@ -100,6 +100,11 @@ class NoteMdIR(object):
 
         # render
         note_path = self.get_note_path(meta_key)
+
+        dirpath = os.path.dirname(note_path)
+        if not os.path.exists(dirpath):
+            os.makedirs(dirpath)
+
         env = Environment(
             loader=FileSystemLoader(template_dir),
             keep_trailing_newline=True)
