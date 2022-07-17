@@ -10,6 +10,7 @@ from modules.meta_key_mappings import MetaKeyMappings
 
 
 from configs import (
+    DEFAULT_TAG,
     REF_DEFAULT_TAG,
     TYPE_DEFAULT_TAG,
 )
@@ -33,7 +34,7 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
         note_meta.setdefault('reading_status', default_reading_status)
 
         if 'tags' not in note_meta:
-            note_meta['tags'] = [REF_DEFAULT_TAG, TYPE_DEFAULT_TAG]
+            note_meta['tags'] = [DEFAULT_TAG, REF_DEFAULT_TAG, TYPE_DEFAULT_TAG]
 
     def gen_from_meta_yaml(self, meta_ir):
         tag_list = []

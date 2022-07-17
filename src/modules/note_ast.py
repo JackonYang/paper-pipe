@@ -61,7 +61,7 @@ class NoteAst(object):
         str_list = []
         for idx, ref_info in enumerate(ref_list):
             if ref_info['show_ref_link']:
-                title_str = '[%s](%s)' % (ref_info['title'], ref_info['meta_key'])
+                title_str = '[%s](%s.md)' % (ref_info['title'], ref_info['meta_key'])
             else:
                 title_str = ref_info['title'].strip('][')
 
