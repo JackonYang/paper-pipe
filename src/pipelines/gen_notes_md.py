@@ -21,6 +21,11 @@ logger = logging.getLogger(__name__)
 
 default_reading_status = 'TBD'
 
+list_keys_to_merge = [
+    'tags',
+    'urls',
+]
+
 
 class GenNotesMdPipe(BasePipeline, NoteMdIR):
     meta_key_mappings = None
@@ -57,6 +62,11 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
             for k, v in meta.items():
                 if not meta_ir.is_ignore_key(k) and k not in note_meta:
                     note_meta[k] = v
+
+            if 'url' in meta:
+                urls = note_meta.get('urls', [])
+                urls.append(meta['url'])
+                note_meta['urls'] = sorted(list(set(urls)))
 
             self.add_default_meta(note_meta)
 
@@ -100,6 +110,11 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
 
         self.meta_key_mappings.save()
 
+    def merge_list_meta(self, field_key, tar_data, src_data):
+        values = tar_data['meta'].get(field_key, []) + src_data['meta'].get(field_key, [])
+        if len(values) > 0:
+            return list(set(values))
+
     def merge_notes(self):
         merged = 0
         for src, tar in self.meta_key_mappings.iter_mapping():
@@ -130,9 +145,10 @@ class GenNotesMdPipe(BasePipeline, NoteMdIR):
                     merged_meta[k] = v
 
             # special keys to merge
-            tags = tar_data['meta'].get('tags', []) + src_data['meta'].get('tags', [])
-            if len(tags) > 0:
-                merged_meta['tags'] = list(set(tags))
+            for k in list_keys_to_merge:
+                v = self.merge_list_meta(k, tar_data, src_data)
+                if v:
+                    merged_meta[k] = v
 
             # merge content
             content_list = [
