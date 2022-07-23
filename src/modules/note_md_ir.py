@@ -33,6 +33,10 @@ leading_links_config = [
         'display': 'pdf(local)',
         'key': 'pdf_path',
     },
+    {
+        'display': 'semanticscholar url',
+        'key': 'semanticscholar_url',
+    }
 ]
 
 
@@ -88,6 +92,15 @@ class NoteMdIR(object):
         pdf_relpath = meta.get('pdf_relpath')
         if pdf_relpath:
             return os.path.join(self.get_relative_root(), pdf_relpath)
+
+    def get_semanticscholar_url_link(self, meta):
+        urls = meta.get('urls')
+        if not isinstance(urls, list):
+            return
+
+        for url in urls:
+            if 'www.semanticscholar.org' in url:
+                return url
 
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
