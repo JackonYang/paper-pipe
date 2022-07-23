@@ -20,7 +20,7 @@ from modules import meta_io
 META_BOUNDARY = re.compile(r'^-{3,}\s*$', re.MULTILINE)
 
 # markdown_link_re = re.compile(r'\[(.*?)\]\((.*?)\)')
-pdf_link_re = re.compile(r'\[(.*?pdf.*?)\]\((.*?)\)')
+link_re = r'^\[(.*?%s.*?)\]\((.*?)\)$'
 h1_heading_re = re.compile(r'^# (.*)$', re.MULTILINE)
 
 default_data = {
@@ -37,6 +37,11 @@ leading_links_config = [
         'display': 'semanticscholar url',
         'key': 'semanticscholar_url',
     }
+]
+
+leading_links_ptns = [
+    re.compile(link_re % re.escape(i['display']), re.MULTILINE)
+    for i in leading_links_config
 ]
 
 
@@ -71,8 +76,10 @@ class NoteMdIR(object):
         return ''
 
     def clean_content(self, content, drop_h1_heading=False):
-        # drop pdf link
-        content = pdf_link_re.sub('', content)
+        # drop leading links
+        for ptn in leading_links_ptns:
+            content = ptn.sub('', content)
+
         # drop h1 heading
         if drop_h1_heading:
             content = h1_heading_re.sub('', content)
