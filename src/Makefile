@@ -12,6 +12,10 @@ help:
 paper-download:
 	cd $(CODE_ROOT) && $(PY) manage.py paper_download
 
+run-pipe:
+	make gen-meta-yaml
+	make gen-notes-md
+
 gen-meta-yaml:
 	make gen-pdf-meta
 	make gen-ref-meta
