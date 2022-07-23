@@ -28,6 +28,13 @@ default_data = {
     'content': '',
 }
 
+leading_links_config = [
+    {
+        'display': 'pdf(local)',
+        'key': 'pdf_path',
+    },
+]
+
 
 class NoteMdIR(object):
     note_dir = None
@@ -77,6 +84,11 @@ class NoteMdIR(object):
 
         return has_content and has_h1
 
+    def get_pdf_path_link(self, meta):
+        pdf_relpath = meta.get('pdf_relpath')
+        if pdf_relpath:
+            return os.path.join(self.get_relative_root(), pdf_relpath)
+
     def render_note_md(self, meta_key, data):
         template_dir = TEMPLATE_DIR,
         template_name = NOTE_TEMPLATE_NAME
@@ -86,17 +98,21 @@ class NoteMdIR(object):
         # pre-processing
         data['h1_heading'] = self.get_h1(data)
         data['content'] = self.clean_content(data['content'], drop_h1_heading=True)
-
-        pdf_relpath = meta.get('pdf_relpath')
-        if pdf_relpath:
-            data['pdf_path'] = os.path.join(self.get_relative_root(), pdf_relpath)
-
         # processing
         data['meta_str'] = self.note_ast.render_meta(meta)
         data['h2_sections'] = self.note_ast.gen_h2_sections(data)
 
+        leading_links = []
+        for link in leading_links_config:
+            meth = getattr(self, 'get_%s_link' % link['key'].lower())
+            url = meth(meta)
+            if url is not None:
+                name = link['display']
+                leading_links.append([name, url])
+
         # post-processing
         data['render_h1'] = self.is_render_h1(data)
+        data['leading_links'] = leading_links
 
         # render
         note_path = self.get_note_path(meta_key)

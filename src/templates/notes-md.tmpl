@@ -2,9 +2,9 @@
 ---
 {{ meta_str }}
 ---
-{% if pdf_path %}
-[pdf(local)]({{ pdf_path }})
-{% endif -%}
+{% for display, url in leading_links %}
+[{{ display }}]({{ url }})
+{% endfor -%}
 
 {%- if render_h1 %}
 # {{ h1_heading }}

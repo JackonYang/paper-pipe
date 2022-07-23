@@ -3,6 +3,7 @@ import yaml
 yaml_dump_kwargs = {
     'width': 9999,
     'default_flow_style': False,
+    'allow_unicode': True,
 }
 
 

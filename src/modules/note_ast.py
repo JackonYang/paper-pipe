@@ -27,7 +27,6 @@ h2_section_configs = [
         'title': 'Paper References',
         'default_value': [],
     },
-
 ]
 
 
