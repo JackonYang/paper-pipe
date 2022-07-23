@@ -32,3 +32,8 @@ PDF_META_DIR = os.path.join(EXTRA_DATA_ROOT, 'pdf-meta')
 PAPER_NOTES_DIR = os.path.join(USER_DATA_ROOT, '01-zettelkasten/paper-notes')
 
 PDF_DIR = os.path.join(USER_DATA_ROOT, 'paper-repo/pdfs')
+
+# -------- export --------
+EXPORT_FOR_DIGITAL_PAPER = os.path.join(
+    os.path.expanduser('~'), 'digital-paper/paper-reading'
+)

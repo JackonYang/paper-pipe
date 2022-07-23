@@ -19,6 +19,11 @@ gen-meta-yaml:
 gen-notes-md:
 	cd $(CODE_ROOT) && $(PY) manage.py gen-notes-md
 
+# ---- export ----
+
+export-for-dp:
+	cd $(CODE_ROOT) && $(PY) manage.py export-for-digital-paper
+
 # ---- micro steps ----
 
 gen-pdf-meta:
