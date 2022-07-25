@@ -3,6 +3,7 @@ import os
 from configs import (
     DEFAULT_TAG,
     TYPE_DEFAULT_TAG,
+    PDF_DEFAULT_TAG,
 )
 
 from .base_pipeline import BasePipeline
@@ -27,6 +28,7 @@ def get_default_tags():
     return [
         DEFAULT_TAG,
         TYPE_DEFAULT_TAG,
+        PDF_DEFAULT_TAG,
     ]
 
 
