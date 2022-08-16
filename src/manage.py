@@ -77,13 +77,7 @@ def run_job(args):
     if args.ini and os.path.exists(args.ini):
         kwargs = load_ini(args.ini)
     else:
-        kwargs = {}
-
-    # update kwargs if specified in command line args
-    # save args.skip_* to kwargs
-    for step in sub_steps:
-        key = 'skip_%s' % step.replace('-', '_')
-        kwargs[key] = getattr(args, key)
+        kwargs = vars(args)
 
     # run the pipeline
     err_no = pipe_runner_func(**kwargs)
