@@ -2,7 +2,7 @@ PY?=python3
 PIP?=pip3
 DC?=docker-compose
 
-CODE_ROOT?=.
+CODE_ROOT?=src
 
 help:
 	cd $(CODE_ROOT) && $(PY) manage.py --help
