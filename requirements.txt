@@ -1,0 +1,14 @@
+numpy
+pandas
+graphviz
+
+pyyaml
+
+requests
+jinja2
+
+# code check
+flake8
+pytest>=3
+pytest-xdist
+pytest-cov
