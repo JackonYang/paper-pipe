@@ -31,6 +31,7 @@ tags_to_export = [
     'detection',
     'ocr',
     'table-ocr',
+    'pytorch',
 ]
 
 export_root = EXPORT_FOR_DIGITAL_PAPER
