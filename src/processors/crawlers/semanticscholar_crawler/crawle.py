@@ -2,9 +2,9 @@ import os
 import json
 from .api import download_ref_links
 from configs import (
-    CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR as CRAWLED_REF_INFO_DIR,
+    CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR as REF_INFO_DIR,
     SEED_REF_MIN_COUNTS,
-    POOLING_REF_MIN_COUNT,
+    DIGGING_REF_MIN_COUNT,
 )
 
 import logging
@@ -18,7 +18,7 @@ url_ptn = 'https://www.semanticscholar.org/paper/%s/%s?sort=total-citations'
 
 
 def get_outfile(pid):
-    return os.path.join(CRAWLED_REF_INFO_DIR, '%s.json' % pid)
+    return os.path.join(REF_INFO_DIR, '%s.json' % pid)
 
 
 def append_url_by_string(urls, url, drop_exists=False):
@@ -71,8 +71,8 @@ def read_urls_from_refs(dir_path):
 
 def download_urls(urls):
 
-    if not os.path.exists(CRAWLED_REF_INFO_DIR):
-        os.makedirs(CRAWLED_REF_INFO_DIR)
+    if not os.path.exists(REF_INFO_DIR):
+        os.makedirs(REF_INFO_DIR)
 
     ref_urls = []
 
@@ -123,43 +123,49 @@ def download_seed(seed_url):
 
         golden_urls = filter_valuable_urls(urls, ref_min_cnt, drop_exists=False)
 
-        logger.info('start seed round: %s, golden url cnt: %s, orig cnt: %s' % (idx + 1, len(golden_urls), len(urls)))
+        logger.info('start seed round: %s, golden url cnt: %s, orig cnt: %s. seed_url: %s' % (idx + 1, len(golden_urls), len(urls), seed_url[1]))
 
         urls = download_urls(golden_urls)
 
 
 def main():
 
-    if not os.path.exists(CRAWLED_REF_INFO_DIR):
-        os.makedirs(CRAWLED_REF_INFO_DIR)
-
-    orig_ref_file_cnt = len(os.listdir(CRAWLED_REF_INFO_DIR))
-
+    # seeds (paper urls) to crawler
     list_file = os.path.join(CUR_DIR, 'url.list')
-    seed_urls = read_urls_from_file(list_file)
 
+    # output dir, downloaded paper reference info saved here
+    if not os.path.exists(REF_INFO_DIR):
+        os.makedirs(REF_INFO_DIR)
+
+    # counter. used to calc newly downloaded paper ref info count
+    orig_ref_file_cnt = len(os.listdir(REF_INFO_DIR))
+
+    # download seeds defined in list_file
+    seed_urls = read_urls_from_file(list_file)
     for seed_url in seed_urls:
         download_seed(seed_url)
 
-    pooling_round_idx = 1
-    pooling_ref_min_cnt = POOLING_REF_MIN_COUNT
+    digging_round_idx = 1
+    digging_ref_min_cnt = DIGGING_REF_MIN_COUNT
 
+    # dig more reference links and download them
     while True:
-        urls = read_urls_from_refs(CRAWLED_REF_INFO_DIR)
+        urls = read_urls_from_refs(REF_INFO_DIR)
 
-        chosen_urls = filter_valuable_urls(urls, min_count=pooling_ref_min_cnt, drop_exists=True)
+        chosen_urls = filter_valuable_urls(urls, min_count=digging_ref_min_cnt, drop_exists=True)
 
         if len(chosen_urls) == 0:
+            # no more valuable links to download
             break
 
-        logger.info('start pooling round: %s, golden url cnt: %s, orig cnt: %s' % (pooling_round_idx, len(chosen_urls), len(urls)))
+        logger.info('start digging round: %s, chosen_count: %s, candidate_count: %s' % (digging_round_idx, len(chosen_urls), len(urls)))
         download_urls(chosen_urls)
 
-        pooling_round_idx += 1
+        digging_round_idx += 1
 
-    new_ref_file_cnt = len(os.listdir(CRAWLED_REF_INFO_DIR))
+    new_ref_file_cnt = len(os.listdir(REF_INFO_DIR))
 
-    logger.info('newly download count: %s, total file count: %s' % (new_ref_file_cnt - orig_ref_file_cnt, new_ref_file_cnt))
+    logger.info('newly download count: %s, total reference file count: %s' % (new_ref_file_cnt - orig_ref_file_cnt, new_ref_file_cnt))
 
 
 if __name__ == '__main__':
