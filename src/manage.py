@@ -18,6 +18,7 @@ pipeline_choices = [
     f[:-3].replace('_', '-') for f in os.listdir(os.path.join(CURRENT_DIR, pipeline_dirname)) if f.endswith('.py') and f not in ignored_pipe_names
 ]
 
+# use to manually skip some steps by setting env var skip_*
 sub_steps = [
     'gen_note_from_pdf',
     'gen_note_from_ref',
@@ -66,12 +67,22 @@ def init_argparser():
     return parser
 
 
+def run_pipeline(pipeline, kwargs):
+    pipe_runner_func = load_pipeline_runner(pipeline)
+    err_no = pipe_runner_func(**kwargs)
+
+    if err_no is None:
+        raise ValueError('missing return code. pipeline: %s, runner function: %s, file: %s' %
+                         (pipeline, pipe_runner_func.__name__, pipe_runner_func.__code__.co_filename))
+
+    return err_no
+
+
 def run_job(args):
     err_no = 0
 
     # init pipeline runner
     pipeline = args.pipeline
-    pipe_runner_func = load_pipeline_runner(pipeline)
 
     # init kwargs dict
     if args.ini and os.path.exists(args.ini):
@@ -79,13 +90,15 @@ def run_job(args):
     else:
         kwargs = vars(args)
 
+    # print(kwargs)
+    # update kwargs if specified in command line args
+    # save args.skip_* to kwargs
+    # for step in sub_steps:
+    #     key = 'skip_%s' % step.replace('-', '_')
+    #     kwargs[key] = getattr(args, key)
+
     # run the pipeline
-    err_no = pipe_runner_func(**kwargs)
-
-    if err_no is None:
-        raise ValueError('missing return code. pipeline: %s, runner function: %s, file: %s' %
-                         (pipeline, pipe_runner_func.__name__, pipe_runner_func.__code__.co_filename))
-
+    err_no = run_pipeline(pipeline, kwargs)
     return err_no
 
 

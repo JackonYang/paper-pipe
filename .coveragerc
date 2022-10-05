@@ -1,7 +1,8 @@
 [report]
 omit = 
     */manage.py
-    src/utils100/files_api.py
+    src/tests/*
+    src/utils/files_api.py
 
 exclude_lines =
     # Have to re-enable the standard pragma
