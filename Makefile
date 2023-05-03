@@ -9,7 +9,10 @@ help:
 
 # ---- main steps ------
 
-paper-download:
+setup:
+	bash scripts/setup.sh
+
+download:
 	cd $(CODE_ROOT) && $(PY) manage.py paper_download
 
 run-pipe:
@@ -65,9 +68,6 @@ push-all:
 
 # ---- common commands of python project ----
 
-setup:
-	bash $(CODE_ROOT)/scripts/set-env-mac.sh
-
 flake8:
 	flake8 $(CODE_ROOT)
 
@@ -76,7 +76,7 @@ test:
 
 .PHONY: help
 
-.PHONY: paper-download
+.PHONY: download
 .PHONY: gen-meta-yaml
 .PHONY: gen-notes-md
 

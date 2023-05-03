@@ -2,7 +2,7 @@
 
 科技论文的下载、数据清洗与信息提取，试着碰撞一下好玩的思路💥
 
-文档写的比较简单，如果使用中遇到问题，联系 i@jackon.me
+contact: i[at]jackon[dot]me
 
 ## 准备开发环境
 
@@ -10,15 +10,13 @@
 pip install -r requirements.txt
 ```
 
-注: requirements.txt 的包可能更新不及时，遇到漏的，pip install 即可
-
 ## 功能说明
 
 ### 功能 1: 参考文献的地图 & 笔记
 
 #### 功能
 
-1. (输入）给定一个论文网站的 paper 的 link
+1. (输入) 给定一个论文网站的 paper 的 link
 2. 根据 reference 把引用的引用也抓下来
 3. 给每个 paper 生成一个 markdown 文件，内含 titie/author/abstract 等信息。
 4. 生成的 markdown 文件包含 reference 的 markdown link。在 obsidian 中打开，可以直接看到引用关系的可视化图。
@@ -36,8 +34,10 @@ pip install -r requirements.txt
 #### 用法
 
 ```bash
+make setup
+
 # download related papers
-make paper-download
+make download
 
 # gen struct metadata yaml from downloaded paper info
 make gen-ref-meta
