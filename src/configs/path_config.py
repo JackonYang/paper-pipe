@@ -26,6 +26,12 @@ CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR = os.path.join(CRAWLER_CACHE_ROOT, 'ref-in
 # share one dir for collected ref meta
 REF_META_DIR = os.path.join(EXTRA_DATA_ROOT, 'ref-meta')
 
+# citation data dir
+# unique dir for each crawler
+CRAWLED_SEMANTIC_SCHOLAR_CITATION_DIR = os.path.join(CRAWLER_CACHE_ROOT, 'citation-semantic-scholar')
+# share one dir for collected ref meta
+CITATION_META_DIR = os.path.join(EXTRA_DATA_ROOT, 'citation')
+
 # pdf data dir
 PDF_META_DIR = os.path.join(EXTRA_DATA_ROOT, 'pdf-meta')
 
@@ -38,7 +44,3 @@ PDF_DIR = os.path.join(USER_DATA_ROOT, 'paper-repo/pdfs')
 EXPORT_FOR_DIGITAL_PAPER = os.path.join(
     os.path.expanduser('~'), 'digital-paper/paper-reading'
 )
-
-
-# -------- config API ---------
-DOWNLOAD_OUTPUT_DIR = CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR
