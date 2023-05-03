@@ -3,8 +3,8 @@ from .crawle_citations import main as crawle_citations
 
 
 def main():
-    crawle_refs()
-    # crawle_citations()
+    # crawle_refs()
+    crawle_citations()
 
 
 if __name__ == '__main__':

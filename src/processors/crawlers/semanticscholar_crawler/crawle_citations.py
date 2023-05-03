@@ -4,6 +4,7 @@ from .citation_api import download_citation_links
 from configs import (
     CRAWLED_SEMANTIC_SCHOLAR_CITATION_DIR as DOWNLOAD_OUTPUT_DIR,
     SEED_CITATION_MIN_COUNTS,
+    CITATION_MAX_PAGES,
     DIGGING_REF_MIN_COUNT,
 )
 
@@ -84,9 +85,9 @@ def download_urls(urls):
                 data = json.load(fr)
             new_ref_links = data['links']
         else:
-            data = download_ref_links(pid, url, outfile)
+            data = download_citation_links(pid, url, outfile, max_pages=CITATION_MAX_PAGES)
             new_ref_links = data['links']
-            logger.info('(%s/%s)%s refs downloaded. url: %s' % (
+            logger.info('(%s/%s)%s citations downloaded. url: %s' % (
                 idx + 1, len(urls), len(new_ref_links), url))
 
         for ref in new_ref_links:
@@ -129,7 +130,6 @@ def download_seed(seed_url):
 
 
 def main():
-
     # seeds (paper urls) to crawler
     list_file = os.path.join(CUR_DIR, 'url_citation.list')
 

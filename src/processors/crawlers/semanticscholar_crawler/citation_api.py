@@ -101,7 +101,7 @@ def default_empty_rsp(page_url, meta_info=None):
     }
 
 
-def download_citation_links(pid, page_url, outfile):
+def download_citation_links(pid, page_url, outfile, max_pages=None):
 
     links = []
 
@@ -117,7 +117,10 @@ def download_citation_links(pid, page_url, outfile):
     links.extend(meta_info.pop('results'))
     total_pages = meta_info['totalPages']
 
-    for i in range(2, total_pages):
+    if max_pages is not None:
+        total_pages = min(total_pages, max_pages)
+
+    for i in range(2, total_pages + 1):
         ret = safe_send_req(pid, i, page_url)
 
         if ret is None:
