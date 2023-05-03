@@ -13,9 +13,10 @@ def send_refs(pid, offset, referer):
 
     referer = quote(referer, safe='/:?=&')
     logger.debug('sending request... referer: %s' % referer)
+    url = "https://www.semanticscholar.org/api/1/paper/%s/citations" % pid
 
     response = requests.get(
-        url="https://www.semanticscholar.org/api/1/paper/%s/citations" % pid,
+        url=url,
         params={
             "sort": "relevance",
             "offset": "%s" % offset,
@@ -31,7 +32,13 @@ def send_refs(pid, offset, referer):
             "Accept-Encoding": "gzip",
         },
     )
-    return response.json()
+    try:
+        rsp_json = response.json()
+    except requests.exceptions.JSONDecodeError:
+        logger.warning('parse json error. url: %s' % url)
+        rsp_json = None
+
+    return rsp_json
 
 
 def safe_send_refs(pid, offset, page_url):
