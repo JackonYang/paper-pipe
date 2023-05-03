@@ -47,7 +47,8 @@ def jcache(f):
                 return pickle.load(fr)
 
         obj = f(*args, **kwargs)
-        write_cache(fn, obj)
+        if obj is not None:
+            write_cache(fn, obj)
         return obj
 
     return wrapper
