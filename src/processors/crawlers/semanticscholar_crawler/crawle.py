@@ -2,7 +2,7 @@ import os
 import json
 from .api import download_ref_links
 from configs import (
-    CRAWLED_SEMANTIC_SCHOLAR_REF_INFO_DIR as REF_INFO_DIR,
+    DOWNLOAD_OUTPUT_DIR,
     SEED_REF_MIN_COUNTS,
     DIGGING_REF_MIN_COUNT,
 )
@@ -18,7 +18,7 @@ url_ptn = 'https://www.semanticscholar.org/paper/%s/%s?sort=total-citations'
 
 
 def get_outfile(pid):
-    return os.path.join(REF_INFO_DIR, '%s.json' % pid)
+    return os.path.join(DOWNLOAD_OUTPUT_DIR, '%s.json' % pid)
 
 
 def append_url_by_string(urls, url, drop_exists=False):
@@ -71,8 +71,8 @@ def read_urls_from_refs(dir_path):
 
 def download_urls(urls):
 
-    if not os.path.exists(REF_INFO_DIR):
-        os.makedirs(REF_INFO_DIR)
+    if not os.path.exists(DOWNLOAD_OUTPUT_DIR):
+        os.makedirs(DOWNLOAD_OUTPUT_DIR)
 
     ref_urls = []
 
@@ -134,11 +134,11 @@ def main():
     list_file = os.path.join(CUR_DIR, 'url.list')
 
     # output dir, downloaded paper reference info saved here
-    if not os.path.exists(REF_INFO_DIR):
-        os.makedirs(REF_INFO_DIR)
+    if not os.path.exists(DOWNLOAD_OUTPUT_DIR):
+        os.makedirs(DOWNLOAD_OUTPUT_DIR)
 
     # counter. used to calc newly downloaded paper ref info count
-    orig_ref_file_cnt = len(os.listdir(REF_INFO_DIR))
+    orig_ref_file_cnt = len(os.listdir(DOWNLOAD_OUTPUT_DIR))
 
     # download seeds defined in list_file
     seed_urls = read_urls_from_file(list_file)
@@ -150,7 +150,7 @@ def main():
 
     # dig more reference links and download them
     while True:
-        urls = read_urls_from_refs(REF_INFO_DIR)
+        urls = read_urls_from_refs(DOWNLOAD_OUTPUT_DIR)
 
         chosen_urls = filter_valuable_urls(urls, min_count=digging_ref_min_cnt, drop_exists=True)
 
@@ -163,7 +163,7 @@ def main():
 
         digging_round_idx += 1
 
-    new_ref_file_cnt = len(os.listdir(REF_INFO_DIR))
+    new_ref_file_cnt = len(os.listdir(DOWNLOAD_OUTPUT_DIR))
 
     logger.info('newly download count: %s, total reference file count: %s' % (new_ref_file_cnt - orig_ref_file_cnt, new_ref_file_cnt))
 
