@@ -1,10 +1,8 @@
-from .crawle_refs import main as crawle_refs
-from .crawle_citations import main as crawle_citations
+from .crawler_v2 import main as main_v2
 
 
 def main():
-    # crawle_refs()
-    crawle_citations()
+    main_v2()
 
 
 if __name__ == '__main__':
