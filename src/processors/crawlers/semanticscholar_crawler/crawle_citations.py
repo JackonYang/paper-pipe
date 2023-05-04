@@ -5,7 +5,7 @@ from configs import (
     CRAWLED_SEMANTIC_SCHOLAR_CITATION_DIR as DOWNLOAD_OUTPUT_DIR,
     SEED_CITATION_MIN_COUNTS,
     CITATION_MAX_PAGES,
-    DIGGING_REF_MIN_COUNT,
+    DIGGING_CITATION_MIN_COUNT,
 )
 
 import logging
@@ -22,7 +22,7 @@ def get_outfile(pid):
     return os.path.join(DOWNLOAD_OUTPUT_DIR, '%s.json' % pid)
 
 
-def append_url_by_string(urls, url, drop_exists=False):
+def append_url_by_string(urls, url, drop_exists=False, numCitedBy=-1):
     url = url.strip()
     base_url = url.split('?', 1)[0]
     pid = base_url.split('/')[-1]
@@ -31,7 +31,7 @@ def append_url_by_string(urls, url, drop_exists=False):
     if drop_exists and os.path.exists(outfile):
         return
 
-    urls.append([pid, url, outfile])
+    urls.append([pid, url, outfile, numCitedBy])
 
 
 def append_url_by_dict(urls, ref, drop_exists=False):
@@ -45,7 +45,9 @@ def append_url_by_dict(urls, ref, drop_exists=False):
     if drop_exists and os.path.exists(outfile):
         return
 
-    urls.append([pid, url, outfile])
+    numCitedBy = ref.get('numCitedBy', 0)
+
+    urls.append([pid, url, outfile, numCitedBy])
 
 
 def read_urls_from_file(file_path):
@@ -78,7 +80,7 @@ def download_urls(urls):
     ref_urls = []
 
     for idx, task in enumerate(urls):
-        pid, url, outfile = task
+        pid, url, outfile, numCitedBy = task
 
         if os.path.exists(outfile):
             with open(outfile, 'r') as fr:
@@ -98,21 +100,16 @@ def download_urls(urls):
 
 def filter_valuable_urls(urls, min_count=5, drop_exists=False):
     # count occurence of each url
-    url_count = {}
+    new_urls = []
     for task in urls:
         if isinstance(task, str):
             url = task
+            numCitedBy = -1
         else:
-            url = task[1]
+            pid, url, outfile, numCitedBy = task
 
-        if url not in url_count:
-            url_count[url] = 0
-        url_count[url] += 1
-
-    new_urls = []
-    for url in url_count:
-        if url_count[url] > min_count:
-            append_url_by_string(new_urls, url, drop_exists=drop_exists)
+        if numCitedBy < 0 or numCitedBy >= min_count:
+            append_url_by_string(new_urls, url, drop_exists=drop_exists, numCitedBy=numCitedBy)
     return new_urls
 
 
@@ -145,10 +142,8 @@ def main():
     for seed_url in seed_urls:
         download_seed(seed_url)
 
-    return
-
     digging_round_idx = 1
-    digging_ref_min_cnt = DIGGING_REF_MIN_COUNT
+    digging_ref_min_cnt = DIGGING_CITATION_MIN_COUNT
 
     # dig more reference links and download them
     while True:

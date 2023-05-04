@@ -13,7 +13,7 @@ def send_request(pid, offset, referer):
 
     referer = quote(referer, safe='/:?=&')
 
-    logger.info('sending request... referer: %s' % referer)
+    logger.debug('sending request... referer: %s' % referer)
 
     url = "https://www.semanticscholar.org/api/1/search/paper/%s/citations" % pid
 
@@ -95,8 +95,8 @@ def safe_send_req(pid, offset, page_url):
 def default_empty_rsp(page_url, meta_info=None):
     meta_info = meta_info or {}
     return {
-        'results': [],
-        'totalPages': -1,
+        'links': [],
+        'meta_info': meta_info,
         'page_url': page_url,
     }
 
