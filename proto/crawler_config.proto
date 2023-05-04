@@ -2,12 +2,25 @@ syntax = "proto3";
 
 package paper_pipe;
 
+message DownloaderConfig {
+  int32 max_pages = 1;
+  int32 start_page = 2;
+
+  string links_key_in_response = 3;
+  string output_dir = 4;
+}
+
 message SemanticScholarConfig {
   string seed_file = 1;
+
+  optional DownloaderConfig citation_configs = 11;
+  optional DownloaderConfig reference_configs = 12;
 }
 
 message CrawlerConfig {
   oneof site_crawler_onfig {
     SemanticScholarConfig semantic_scholar_config = 1;
   }
+
+  string local_cache_root = 11;
 }

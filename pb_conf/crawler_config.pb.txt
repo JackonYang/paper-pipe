@@ -1,3 +1,22 @@
+local_cache_root: "~/cache-PiperPi"
+
 semantic_scholar_config {
     seed_file: "pb_conf/seed_url_semantic_scholar.list"
+
+    citation_configs {
+        max_pages: 1
+        start_page: 1
+
+        links_key_in_response: "results"
+        output_dir: "semantic_scholar/citations"
+    }
+
+    reference_configs {
+        max_pages: -1
+        start_page: 1
+
+        links_key_in_response: "citations"
+        output_dir: "semantic_scholar/references"
+    }
+
 }
