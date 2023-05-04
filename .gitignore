@@ -1,6 +1,7 @@
 # .gitignore by JackonYang
 
 test
+configs_pb2
 
 # self defined
 db.sqlite3

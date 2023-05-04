@@ -12,6 +12,9 @@ help:
 setup:
 	bash scripts/setup.sh
 
+compile:
+	bash scripts/compile_proto.sh
+
 download:
 	cd $(CODE_ROOT) && $(PY) manage.py paper_download
 
@@ -88,4 +91,4 @@ test:
 .PHONY: clean-deleted
 .PHONY: dvc-add push-all
 
-.PHONY: setup flake8 test
+.PHONY: setup flake8 test compile

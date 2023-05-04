@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package paper_pipe;
+
+message SemanticScholarConfig {
+  string seed_file = 1;
+}
+
+message CrawlerConfig {
+  oneof site_crawler_onfig {
+    SemanticScholarConfig semantic_scholar_config = 1;
+  }
+}

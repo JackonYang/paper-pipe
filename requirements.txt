@@ -2,6 +2,7 @@ numpy
 pandas
 graphviz
 
+protobuf
 pyyaml
 
 requests

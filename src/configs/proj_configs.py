@@ -1,5 +1,21 @@
 import os
 
+from google.protobuf import text_format
+
+from configs_pb2.crawler_config_pb2 import CrawlerConfig
+
+from .constants import PROJECT_ROOT
+
+
+# configs API
+crawler_config = CrawlerConfig()
+
+# load configs from pb file
+crawer_config_pb_path = os.path.join(PROJECT_ROOT, 'pb_conf/crawler_config.pb.txt')
+
+with open(crawer_config_pb_path, 'r') as fr:
+    text_format.Parse(fr.read(), crawler_config)
+
 
 DEFAULT_TAG = os.environ.get('DEFAULT_TAG', 'other-default')
 REF_DEFAULT_TAG = os.environ.get('REF_DEFAULT_TAG', 'gen-from-ref')

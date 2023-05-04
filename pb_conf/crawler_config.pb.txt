@@ -1,0 +1,3 @@
+semantic_scholar_config {
+    seed_file: "url.list"
+}

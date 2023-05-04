@@ -1,5 +1,16 @@
 SCRIPT_DIR=$(cd $(dirname "$0") && pwd)
 
+# run brew install if this is MacOS
+echo "install protobuf"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    sudo apt install protobuf-compiler
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install protobuf
+else
+    echo "unknown os type: $OSTYPE"
+fi
+
+
 function clone_repo() {
     local repo_url=$1
     local repo_dir=$2

@@ -35,6 +35,7 @@ pip install -r requirements.txt
 
 ```bash
 make setup
+make compile
 
 # download related papers
 make download
