@@ -1,20 +1,26 @@
 syntax = "proto3";
 
-package paper_pipe;
+package paperpi;
 
-message DownloaderConfig {
-  int32 max_pages = 1;
-  int32 start_page = 2;
+enum RequestType {
+  UNKNOWN_REQ_TYPE = 0;
+  CITATION = 1;
+  REFERENCE = 2;
+}
 
-  string links_key_in_response = 3;
-  string output_dir = 4;
+message RequestConfig {
+  RequestType request_type = 1;
+  int32 max_pages = 2;
+  int32 start_page = 3;
+
+  string links_key_in_response = 4;
+  string output_dir = 5;
 }
 
 message SemanticScholarConfig {
   string seed_file = 1;
 
-  optional DownloaderConfig citation_configs = 11;
-  optional DownloaderConfig reference_configs = 12;
+  repeated RequestConfig request_configs = 11;
 }
 
 message CrawlerConfig {

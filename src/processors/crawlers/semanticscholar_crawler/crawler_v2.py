@@ -5,8 +5,16 @@ from configs import (
     PROJECT_ROOT,
 )
 
-from .downloader import run_downloader
-from . import request_citation
+from configs_pb2.api_spec_pb2 import (
+    DownloaderTask,
+)
+
+from configs_pb2.crawler_config_pb2 import (
+    RequestConfig,
+    RequestType,
+)
+
+from .downloader import run_tasks as run_downloader_tasks
 
 import logging
 
@@ -31,29 +39,56 @@ def url2pid(url):
     return pid
 
 
+def get_oupout_filename(pid: str, request_config: RequestConfig):
+    local_cache_root = os.path.expanduser(crawler_config.local_cache_root)
+
+    output_dir = os.path.join(local_cache_root, request_config.output_dir)
+
+    # ensure output dir exists
+    os.makedirs(output_dir, exist_ok=True)
+
+    return os.path.join(output_dir, '%s.json' % pid)
+
+
+def add_to_tasks(tasks: list[DownloaderTask], request_type: RequestType,
+                 page_url: str, pid: str = None, output_file: str = None) -> DownloaderTask:
+
+    request_config = None
+    for i in conf.request_configs:
+        if i.request_type == request_type:
+            request_config = i
+            break
+    if request_config is None:
+        raise ValueError('missing request config for %s' % request_type)
+
+    if pid is None:
+        pid = url2pid(page_url)
+    if output_file is None:
+        output_file = get_oupout_filename(pid, request_config)
+
+    task = DownloaderTask()
+    task.page_url = page_url
+    task.pid = pid
+    task.request_type = request_type
+    task.request_config.CopyFrom(request_config)
+    task.output_file = output_file
+
+    tasks.append(task)
+    return task
+
+
 def main():
     seed_urls = load_seed_urls()
 
-    local_cache_root = os.path.expanduser(crawler_config.local_cache_root)
-    out_dir_citation = os.path.join(local_cache_root, conf.citation_configs.output_dir)
-    out_dir_ref = os.path.join(local_cache_root, conf.reference_configs.output_dir)
+    # step1, download papers that cite seed papers
+    tasks = []
+    for url in seed_urls:
+        add_to_tasks(tasks, RequestType.CITATION, url)
 
-    # ensure output dir exists
-    if not os.path.exists(out_dir_citation):
-        os.makedirs(out_dir_citation)
-    if not os.path.exists(out_dir_ref):
-        os.makedirs(out_dir_ref)
+    new_links = run_downloader_tasks(tasks)
 
-    for idx, url in enumerate(seed_urls):
-        pid = url2pid(url)
-        outfile = os.path.join(out_dir_citation, '%s.json' % pid)
-
-        # step1.1, download seed's citations
-        data = run_downloader(pid, url, request_citation.send_request, conf.citation_configs, outfile)
-
-        msg = '(%s/%s) %s citations downloaded. url: %s' % (
-            idx + 1, len(seed_urls), len(data['links']), url)
-        logger.info(msg)
+    print('-' * 80)
+    print(len(new_links))
 
 
 if __name__ == '__main__':

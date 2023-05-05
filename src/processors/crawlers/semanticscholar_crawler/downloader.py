@@ -1,19 +1,55 @@
 import copy
 import json
 
-from configs_pb2.crawler_config_pb2 import DownloaderConfig
+from configs_pb2.crawler_config_pb2 import (
+    RequestConfig,
+    RequestType,
+)
+
+from configs_pb2.api_spec_pb2 import DownloaderTask
+
+from . import request_citation
 
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-# API
-def run_downloader(pid: str, page_url: str,
-                   api_func: callable, api_configs: DownloaderConfig,
-                   outfile: str = None):
+req_func_map = {
+    RequestType.CITATION: request_citation.send_request,
+}
 
-    data = _run_downloader(pid, page_url, api_func, api_configs)
+
+# API
+def run_tasks(task_args: list[DownloaderTask]):
+    task_cnt = len(task_args)
+    links = []
+
+    for idx, task in enumerate(task_args):
+        data = run_one_task(task)
+
+        new_links = data['links']
+        links.extend(new_links)
+
+        req_name = task.request_config.request_type
+        msg = '(%s/%s) %s %ss downloaded. url: %s' % (
+            idx + 1, task_cnt, len(new_links), req_name, task.page_url)
+        logger.info(msg)
+
+    return links
+
+
+# API
+def run_one_task(task: DownloaderTask):
+
+    pid = task.pid
+    page_url = task.page_url
+    outfile = task.output_file
+
+    req_config = task.request_config
+    req_func = req_func_map[req_config.request_type]
+
+    data = _run_downloader(pid, page_url, req_func, req_config)
 
     if data is None:
         # ensure the same return schema
@@ -27,7 +63,7 @@ def run_downloader(pid: str, page_url: str,
 
 
 def _run_downloader(pid: str, page_url: str,
-                    api_func: callable, api_configs: DownloaderConfig):
+                    api_func: callable, api_configs: RequestConfig):
     start_page = api_configs.start_page
     max_pages = api_configs.max_pages
     links_key = api_configs.links_key_in_response

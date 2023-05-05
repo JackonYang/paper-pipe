@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package paperpi;
+
+import "crawler_config.proto";
+
+enum ApiStatusCode {
+  UNKNOWN_STATUS_CODE = 0;
+  OK = 1;
+}
+
+message DownloaderTask {
+  string page_url = 1;
+  string pid = 2;
+
+  RequestType request_type = 11;
+  RequestConfig request_config = 12;
+
+  optional string output_file = 21;
+}
+
+message DownloaderApi {
+  repeated DownloaderTask tasks = 1;
+}
+
+message ApiSpecPool {
+  optional DownloaderApi downloader = 1;
+}
