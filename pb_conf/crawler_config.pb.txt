@@ -1,4 +1,4 @@
-local_cache_root: "~/cache-PiperPi"
+local_cache_root: "~/cache-piperPi"
 
 semantic_scholar_config {
     seed_file: "pb_conf/seed_url_semantic_scholar.list"
