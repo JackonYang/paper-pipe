@@ -6,6 +6,7 @@ from configs import (
 )
 
 from configs_pb2.api_spec_pb2 import (
+    PaperTask,
     DownloaderTask,
 )
 
@@ -50,7 +51,7 @@ def get_oupout_filename(pid: str, request_config: RequestConfig):
     return os.path.join(output_dir, '%s.json' % pid)
 
 
-def add_paper_to_tasks(tasks, pid=None, page_url=None) -> int:
+def add_paper_to_tasks(tasks, pid=None, page_url=None, title='', skip_exists=True) -> int:
     added_cnt = 0
 
     if [pid, page_url].count(None) != 1:
@@ -59,14 +60,21 @@ def add_paper_to_tasks(tasks, pid=None, page_url=None) -> int:
     if pid is None:
         pid = url2pid(page_url)
 
-    added_cnt += add_to_tasks(tasks, RequestType.CITATION, pid)
-    added_cnt += add_to_tasks(tasks, RequestType.REFERENCE, pid)
+    paper_task = PaperTask()
+    paper_task.pid = pid
+    paper_task.title = title
+
+    add_subtask(paper_task, RequestType.CITATION, pid, skip_exists)
+    add_subtask(paper_task, RequestType.REFERENCE, pid, skip_exists)
+
+    if len(paper_task.subtasks) > 0:
+        tasks.append(paper_task)
+        added_cnt += 1
 
     return added_cnt
 
 
-def add_to_tasks(tasks: list[DownloaderTask], request_type: RequestType, pid: str) -> int:
-
+def add_subtask(task: PaperTask, request_type: RequestType, pid: str, skip_exists=True) -> int:
     added_cnt = 0
 
     request_config = None
@@ -78,13 +86,18 @@ def add_to_tasks(tasks: list[DownloaderTask], request_type: RequestType, pid: st
         raise ValueError('missing request config for %s' % request_type)
 
     output_file = get_oupout_filename(pid, request_config)
+    if skip_exists and os.path.exists(output_file):
+        logger.debug('skip existing file: %s' % output_file)
+        return added_cnt
 
-    task = DownloaderTask()
-    task.pid = pid
-    task.request_config.CopyFrom(request_config)
-    task.output_file = output_file
+    subtask = DownloaderTask()
+    subtask.pid = pid
+    subtask.request_config.CopyFrom(request_config)
+    subtask.output_file = output_file
 
-    tasks.append(task)
+    # add subtask to task
+    task.subtasks.append(subtask)
+
     added_cnt += 1
     return added_cnt
 
@@ -174,7 +187,7 @@ def main():
     # step 1, download seed_urls ref and citation
     tasks = []
     for url in seed_urls:
-        add_paper_to_tasks(tasks, page_url=url)
+        add_paper_to_tasks(tasks, page_url=url, skip_exists=False)
 
     new_links = run_downloader_tasks(tasks)
 

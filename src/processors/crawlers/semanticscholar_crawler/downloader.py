@@ -5,7 +5,10 @@ from configs_pb2.crawler_config_pb2 import (
     RequestType,
 )
 
-from configs_pb2.api_spec_pb2 import DownloaderTask
+from configs_pb2.api_spec_pb2 import (
+    DownloaderTask,
+    PaperTask,
+)
 
 from . import semanticscholar_api
 
@@ -21,19 +24,25 @@ req_func_map = {
 
 
 # API
-def run_tasks(task_args: list[DownloaderTask]):
+def run_tasks(task_args: list[PaperTask], log_prefix: str = ''):
     task_cnt = len(task_args)
     links = []
 
     for idx, task in enumerate(task_args):
-        data = run_one_task(task)
+        res_info = {}
+        for subtask in task.subtasks:
+            data = run_one_task(subtask)
 
-        new_links = data['links']
-        links.extend(new_links)
+            new_links = data['links']
+            links.extend(new_links)
 
-        req_name = task.request_config.request_type
-        msg = '(%s/%s) %s %ss downloaded. url: %s' % (
-            idx + 1, task_cnt, len(new_links), req_name, task.page_url)
+            key = '%s_cnt' % subtask.task_name
+            res_info[key] = len(new_links)
+
+        msg = '%s(%s/%s) downloaded %s. pid: %s, title: %s' % (
+            log_prefix, idx + 1, task_cnt,
+            str(res_info), task.pid, task.title)
+
         logger.info(msg)
 
     return links
@@ -73,7 +82,7 @@ def request_by_api(pid: str, api_func: callable, api_configs: RequestConfig):
         rsp = safe_send_req(api_func, pid, offset=offset, limit=limit)
 
         if rsp is None:
-            logger.warning('failed to send request. page_url: %s' % pid)
+            logger.warning('failed to send request. pid: %s' % pid)
             return
 
         # valid response in the rest pages

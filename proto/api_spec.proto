@@ -13,9 +13,17 @@ message DownloaderTask {
   string page_url = 1;
   string pid = 2;
 
+  string task_name = 11;
   RequestConfig request_config = 12;
 
   optional string output_file = 21;
+}
+
+message PaperTask {
+  repeated DownloaderTask subtasks = 1;
+
+  string pid = 11;
+  optional string title = 12;
 }
 
 message DownloaderApi {
