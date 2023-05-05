@@ -101,6 +101,7 @@ def _run_downloader(pid: str, page_url: str,
         rsp = safe_send_req(api_func, pid, i, page_url)
 
         if rsp is None:
+            logger.warning('failed to send request. page_url: %s' % page_url)
             return
 
         # valid response in the rest pages

@@ -7,15 +7,20 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+url_tmpl = "https://www.semanticscholar.org/api/1/search/paper/%s/citations"
+referer_tmpl = '?citedSort=relevance&sort=%s&page=%s'
 
 @jcache
 def send_request(pid, page_no, referer):
+    referer_base = referer.split('?', 1)[0]
+    sort_alg = "total-citations"
+    refer_page_no = page_no - 1 if page_no > 1 else 2
+    referer = referer_base + referer_tmpl % (sort_alg, refer_page_no)
 
     referer = quote(referer, safe='/:?=&')
+    url = url_tmpl % pid
 
-    logger.debug('sending request... referer: %s' % referer)
-
-    url = "https://www.semanticscholar.org/api/1/search/paper/%s/citations" % pid
+    logger.debug('requesting... page: %s, referer: %s' % (page_no, referer))
 
     response = requests.post(
         url=url,
@@ -30,7 +35,7 @@ def send_request(pid, page_no, referer):
         },
         data=json.dumps({
             "pageSize": 10,
-            "sort": "total-citations",
+            "sort": sort_alg,
             "authors": [],
             "venues": [],
             "yearFilter": None,
