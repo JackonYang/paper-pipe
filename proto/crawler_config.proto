@@ -12,9 +12,10 @@ message RequestConfig {
   RequestType request_type = 1;
   int32 max_pages = 2;
   int32 start_page = 3;
+  int32 limit = 4;
 
-  string links_key_in_response = 4;
-  string output_dir = 5;
+  string links_key_in_response = 11;
+  string output_dir = 12;
 }
 
 message SemanticScholarConfig {

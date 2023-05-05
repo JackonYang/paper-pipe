@@ -5,19 +5,19 @@ semantic_scholar_config {
 
     request_configs {
         request_type: CITATION
-        max_pages: 1
-        start_page: 1
+        max_pages: 10
+        limit: 1000
 
-        links_key_in_response: "results"
+        links_key_in_response: "data"
         output_dir: "semantic_scholar/citations"
     }
 
     request_configs {
         request_type: REFERENCE
-        max_pages: -1
-        start_page: 1
+        max_pages: 10
+        limit: 1000
 
-        links_key_in_response: "results"
+        links_key_in_response: "data"
         output_dir: "semantic_scholar/references"
     }
 
