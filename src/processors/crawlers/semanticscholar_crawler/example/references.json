@@ -4,46 +4,2911 @@
             "citedPaper": {
                 "authors": [
                     {
-                        "authorId": "2574060",
-                        "name": "Christian Szegedy"
+                        "authorId": "39380386",
+                        "name": "Jianwen Xie"
                     },
                     {
-                        "authorId": "2157222093",
-                        "name": "Wei Liu"
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
                     },
                     {
-                        "authorId": "39978391",
-                        "name": "Yangqing Jia"
-                    },
-                    {
-                        "authorId": "3142556",
-                        "name": "P. Sermanet"
-                    },
-                    {
-                        "authorId": "144828948",
-                        "name": "Scott E. Reed"
-                    },
-                    {
-                        "authorId": "1838674",
-                        "name": "Dragomir Anguelov"
-                    },
-                    {
-                        "authorId": "1761978",
-                        "name": "D. Erhan"
-                    },
-                    {
-                        "authorId": "2657155",
-                        "name": "Vincent Vanhoucke"
-                    },
-                    {
-                        "authorId": "39863668",
-                        "name": "Andrew Rabinovich"
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
                     }
                 ],
-                "citationCount": 35288,
-                "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
-                "referenceCount": 264,
-                "title": "Going deeper with convolutions"
+                "citationCount": 37,
+                "fieldsOfStudy": [
+                    "Medicine",
+                    "Computer Science"
+                ],
+                "paperId": "a4b2207e6de1e759ac7a7f45abe7a0b1d1da4558",
+                "referenceCount": 76,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Medicine",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Learning Energy-Based Spatial-Temporal Generative ConvNets for Dynamic Patterns",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "50178985",
+                        "name": "Sicong Huang"
+                    },
+                    {
+                        "authorId": "2730435",
+                        "name": "Alireza Makhzani"
+                    },
+                    {
+                        "authorId": "2902068",
+                        "name": "Yanshuai Cao"
+                    },
+                    {
+                        "authorId": "1785346",
+                        "name": "R. Grosse"
+                    }
+                ],
+                "citationCount": 18,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "ec0acedb80c9531e9fe88155c85980c239b14d06",
+                "referenceCount": 48,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Evaluating Lossy Compression Rates of Deep Generative Models",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "115504645",
+                        "name": "Yang Song"
+                    },
+                    {
+                        "authorId": "2490652",
+                        "name": "S. Ermon"
+                    }
+                ],
+                "citationCount": 374,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "1156e277fa7ec195b043161d3c5c97715da17658",
+                "referenceCount": 33,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Improved Techniques for Training Score-Based Generative Models",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2976930",
+                        "name": "Tero Karras"
+                    },
+                    {
+                        "authorId": "1907688",
+                        "name": "M. Aittala"
+                    },
+                    {
+                        "authorId": "1454226629",
+                        "name": "Janne Hellsten"
+                    },
+                    {
+                        "authorId": "36436218",
+                        "name": "S. Laine"
+                    },
+                    {
+                        "authorId": "49244945",
+                        "name": "J. Lehtinen"
+                    },
+                    {
+                        "authorId": "1761103",
+                        "name": "Timo Aila"
+                    }
+                ],
+                "citationCount": 936,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "29858b40a15704398aecdca6bd2820f2fcc99891",
+                "referenceCount": 55,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Training Generative Adversarial Networks with Limited Data",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2505751",
+                        "name": "Yuntian Deng"
+                    },
+                    {
+                        "authorId": "152918929",
+                        "name": "A. Bakhtin"
+                    },
+                    {
+                        "authorId": "40511414",
+                        "name": "Myle Ott"
+                    },
+                    {
+                        "authorId": "3149531",
+                        "name": "Arthur D. Szlam"
+                    }
+                ],
+                "citationCount": 81,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "68f86237dadcf2f570f0cd5b5e56161693619a74",
+                "referenceCount": 45,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Residual Energy-Based Models for Text Generation",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "47828117",
+                        "name": "Tong Che"
+                    },
+                    {
+                        "authorId": "1410336598",
+                        "name": "Ruixiang Zhang"
+                    },
+                    {
+                        "authorId": "1407546424",
+                        "name": "Jascha Narain Sohl-Dickstein"
+                    },
+                    {
+                        "authorId": "1777528",
+                        "name": "H. Larochelle"
+                    },
+                    {
+                        "authorId": "3198259",
+                        "name": "L. Paull"
+                    },
+                    {
+                        "authorId": "145144022",
+                        "name": "Yuan Cao"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 75,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "bc128adcfacdb03e23c455abbc1486ca21b1d559",
+                "referenceCount": 75,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Your GAN is Secretly an Energy-based Model and You Should use Discriminator Driven Latent Sampling",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "38967461",
+                        "name": "Alex Nichol"
+                    }
+                ],
+                "citationCount": 3,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "7bea525e9557c3539b50fd4fa03eabc875873223",
+                "referenceCount": 22,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "VQ-DRAW: A Sequential Discrete VAE",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "27009713",
+                        "name": "A. Wiggers"
+                    },
+                    {
+                        "authorId": "65928943",
+                        "name": "E. Hoogeboom"
+                    }
+                ],
+                "citationCount": 14,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "36f164c4d09e65b653b15ca7b2ef8147ad990b1d",
+                "referenceCount": 34,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Predictive Sampling with Forecasting Autoregressive Models",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2119795510",
+                        "name": "Hao Wu"
+                    },
+                    {
+                        "authorId": "32602330",
+                        "name": "Jonas K\u00f6hler"
+                    },
+                    {
+                        "authorId": "2064855776",
+                        "name": "Frank No'e"
+                    }
+                ],
+                "citationCount": 87,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics",
+                    "Physics"
+                ],
+                "paperId": "5f27443ea5e03d1e876426df613268e68ce58891",
+                "referenceCount": 59,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Physics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Stochastic Normalizing Flows",
+                "year": 2020
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "12782331",
+                        "name": "Sheng-Yu Wang"
+                    },
+                    {
+                        "authorId": "39231399",
+                        "name": "Oliver Wang"
+                    },
+                    {
+                        "authorId": "2844849",
+                        "name": "Richard Zhang"
+                    },
+                    {
+                        "authorId": "144956994",
+                        "name": "Andrew Owens"
+                    },
+                    {
+                        "authorId": "1763086",
+                        "name": "Alexei A. Efros"
+                    }
+                ],
+                "citationCount": 433,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "01c9fd4c011a580e106dd4a8d4e86299acac8564",
+                "referenceCount": 51,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "CNN-Generated Images Are Surprisingly Easy to Spot\u2026 for Now",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "7649077",
+                        "name": "Will Grathwohl"
+                    },
+                    {
+                        "authorId": "122782486",
+                        "name": "Kuan-Chieh Jackson Wang"
+                    },
+                    {
+                        "authorId": "51919565",
+                        "name": "J. Jacobsen"
+                    },
+                    {
+                        "authorId": "1704657",
+                        "name": "D. Duvenaud"
+                    },
+                    {
+                        "authorId": "144739074",
+                        "name": "Mohammad Norouzi"
+                    },
+                    {
+                        "authorId": "1754860",
+                        "name": "Kevin Swersky"
+                    }
+                ],
+                "citationCount": 329,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "97cd86d8d8c0f27cd3e64c6ca5cfdeb957ee39f4",
+                "referenceCount": 52,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Your Classifier is Secretly an Energy Based Model and You Should Treat it Like One",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2976930",
+                        "name": "Tero Karras"
+                    },
+                    {
+                        "authorId": "36436218",
+                        "name": "S. Laine"
+                    },
+                    {
+                        "authorId": "1907688",
+                        "name": "M. Aittala"
+                    },
+                    {
+                        "authorId": "1454226629",
+                        "name": "Janne Hellsten"
+                    },
+                    {
+                        "authorId": "49244945",
+                        "name": "J. Lehtinen"
+                    },
+                    {
+                        "authorId": "1761103",
+                        "name": "Timo Aila"
+                    }
+                ],
+                "citationCount": 3001,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Engineering",
+                    "Mathematics"
+                ],
+                "paperId": "14fdc18d9c164e5b0d6d946b3238c04e81921358",
+                "referenceCount": 52,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Engineering",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Analyzing and Improving the Image Quality of StyleGAN",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "9659905",
+                        "name": "Ruiqi Gao"
+                    },
+                    {
+                        "authorId": "2043490",
+                        "name": "Erik Nijkamp"
+                    },
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    },
+                    {
+                        "authorId": "2149237056",
+                        "name": "Zhen Xu"
+                    },
+                    {
+                        "authorId": "2555924",
+                        "name": "Andrew M. Dai"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 79,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "1a98549aa8ab011480f0be5fe074fbe6b2acc2dd",
+                "referenceCount": 79,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Flow Contrastive Estimation of Energy-Based Models",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2043490",
+                        "name": "Erik Nijkamp"
+                    },
+                    {
+                        "authorId": "36143970",
+                        "name": "Mitch Hill"
+                    },
+                    {
+                        "authorId": "50495880",
+                        "name": "Tian Han"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 104,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "daa69245c8e956c12583d64acd718210c57c32ba",
+                "referenceCount": 51,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "On the Anatomy of MCMC-based Maximum Likelihood Learning of Energy-Based Models",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "36119458",
+                        "name": "Dieterich Lawson"
+                    },
+                    {
+                        "authorId": "145499435",
+                        "name": "G. Tucker"
+                    },
+                    {
+                        "authorId": "144445933",
+                        "name": "Bo Dai"
+                    },
+                    {
+                        "authorId": "2615814",
+                        "name": "R. Ranganath"
+                    }
+                ],
+                "citationCount": 22,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "ca992c290cec3264e920f3a21fe5bd6464e4817e",
+                "referenceCount": 74,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Energy-Inspired Models: Learning with Sampler-Induced Distributions",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "98264506",
+                        "name": "Yuxin Wu"
+                    },
+                    {
+                        "authorId": "39353098",
+                        "name": "Kaiming He"
+                    }
+                ],
+                "citationCount": 2240,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "d08b35243edc5be07387a9ed218070b31e502901",
+                "referenceCount": 78,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Group Normalization",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "115504645",
+                        "name": "Yang Song"
+                    },
+                    {
+                        "authorId": "2490652",
+                        "name": "S. Ermon"
+                    }
+                ],
+                "citationCount": 960,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "965359b3008ab50dd04e171551220ec0e7f83aba",
+                "referenceCount": 68,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generative Modeling by Estimating Gradients of the Data Distribution",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "143653164",
+                        "name": "Ali Razavi"
+                    },
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "1689108",
+                        "name": "Oriol Vinyals"
+                    }
+                ],
+                "citationCount": 867,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "6be216d93421bf19c1659e7721241ae73d483baf",
+                "referenceCount": 38,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generating Diverse High-Fidelity Images with VQ-VAE-2",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "48422824",
+                        "name": "Rewon Child"
+                    },
+                    {
+                        "authorId": "145565184",
+                        "name": "Scott Gray"
+                    },
+                    {
+                        "authorId": "38909097",
+                        "name": "Alec Radford"
+                    },
+                    {
+                        "authorId": "1701686",
+                        "name": "Ilya Sutskever"
+                    }
+                ],
+                "citationCount": 937,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "21da617a0f79aabf94272107184606cefe90ab75",
+                "referenceCount": 30,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generating Long Sequences with Sparse Transformers",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2043490",
+                        "name": "Erik Nijkamp"
+                    },
+                    {
+                        "authorId": "36143970",
+                        "name": "Mitch Hill"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 135,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "8f33ff90dd7d8ca5d6863efe532efb9f699b8086",
+                "referenceCount": 77,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "7435149",
+                        "name": "Lars Maal\u00f8e"
+                    },
+                    {
+                        "authorId": "2065874926",
+                        "name": "Marco Fraccaro"
+                    },
+                    {
+                        "authorId": "1402589023",
+                        "name": "Valentin Li\u00e9vin"
+                    },
+                    {
+                        "authorId": "1724252",
+                        "name": "O. Winther"
+                    }
+                ],
+                "citationCount": 169,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "d4463fe262306eaac336fa5cae38e98811bffa80",
+                "referenceCount": 65,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "BIVA: A Very Deep Hierarchy of Latent Variables for Generative Modeling",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2126278",
+                        "name": "Jonathan Ho"
+                    },
+                    {
+                        "authorId": "41192764",
+                        "name": "Xi Chen"
+                    },
+                    {
+                        "authorId": "41207614",
+                        "name": "A. Srinivas"
+                    },
+                    {
+                        "authorId": "144581158",
+                        "name": "Yan Duan"
+                    },
+                    {
+                        "authorId": "1689992",
+                        "name": "P. Abbeel"
+                    }
+                ],
+                "citationCount": 318,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "c8b25a128f4bfd0c79de82c174dd403b2ef6eeb1",
+                "referenceCount": 38,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Flow++: Improving Flow-Based Generative Models with Variational Dequantization and Architecture Design",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2976930",
+                        "name": "Tero Karras"
+                    },
+                    {
+                        "authorId": "36436218",
+                        "name": "S. Laine"
+                    },
+                    {
+                        "authorId": "1761103",
+                        "name": "Timo Aila"
+                    }
+                ],
+                "citationCount": 5568,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "ceb2ebef0b41e31c1a21b28c2734123900c005e2",
+                "referenceCount": 65,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3283879",
+                        "name": "R. Prenger"
+                    },
+                    {
+                        "authorId": "2059204721",
+                        "name": "Rafael Valle"
+                    },
+                    {
+                        "authorId": "2301680",
+                        "name": "Bryan Catanzaro"
+                    }
+                ],
+                "citationCount": 732,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Engineering",
+                    "Mathematics"
+                ],
+                "paperId": "220d47d9b2872f0f0c33084fb4425424d91fa0ac",
+                "referenceCount": 23,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Engineering",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Waveglow: A Flow-based Generative Network for Speech Synthesis",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "10698483",
+                        "name": "Jacob Menick"
+                    },
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    }
+                ],
+                "citationCount": 121,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "7d3ab2a839b077a318022f7842225db55033b2c3",
+                "referenceCount": 14,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generating High Fidelity Images with Subscale Pixel Networks and Multidimensional Upscaling",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "7649077",
+                        "name": "Will Grathwohl"
+                    },
+                    {
+                        "authorId": "51466615",
+                        "name": "Ricky T. Q. Chen"
+                    },
+                    {
+                        "authorId": "51012893",
+                        "name": "J. Bettencourt"
+                    },
+                    {
+                        "authorId": "1701686",
+                        "name": "Ilya Sutskever"
+                    },
+                    {
+                        "authorId": "1704657",
+                        "name": "D. Duvenaud"
+                    }
+                ],
+                "citationCount": 571,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "8afa6dd9f9ac46462a1fb70a757c4ae1cd45bbf6",
+                "referenceCount": 24,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "51040874",
+                        "name": "Marton Havasi"
+                    },
+                    {
+                        "authorId": "1809285",
+                        "name": "Robert Peharz"
+                    },
+                    {
+                        "authorId": "1388574431",
+                        "name": "Jos\u00e9 Miguel Hern\u00e1ndez-Lobato"
+                    }
+                ],
+                "citationCount": 42,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "90b60322be13e63c9903b40b3407861e001eba1d",
+                "referenceCount": 19,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Minimal Random Code Learning: Getting Bits Back from Compressed Model Parameters",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2065040247",
+                        "name": "Andrew Brock"
+                    },
+                    {
+                        "authorId": "7408951",
+                        "name": "Jeff Donahue"
+                    },
+                    {
+                        "authorId": "34838386",
+                        "name": "K. Simonyan"
+                    }
+                ],
+                "citationCount": 3625,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "22aab110058ebbd198edb1f1e7b4f69fb13c0613",
+                "referenceCount": 59,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Large Scale GAN Training for High Fidelity Natural Image Synthesis",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "15394275",
+                        "name": "Yilun Du"
+                    },
+                    {
+                        "authorId": "2080746",
+                        "name": "Igor Mordatch"
+                    }
+                ],
+                "citationCount": 198,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "9d2714b20d3bca952403be13b1c69b86004f91dc",
+                "referenceCount": 55,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Implicit Generation and Modeling with Energy Based Models",
+                "year": 2019
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    },
+                    {
+                        "authorId": "6515819",
+                        "name": "Prafulla Dhariwal"
+                    }
+                ],
+                "citationCount": 2056,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+                "referenceCount": 29,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Glow: Generative Flow with Invertible 1x1 Convolutions",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "11126631",
+                        "name": "T. Chen"
+                    },
+                    {
+                        "authorId": "40959192",
+                        "name": "Yulia Rubanova"
+                    },
+                    {
+                        "authorId": "51012893",
+                        "name": "J. Bettencourt"
+                    },
+                    {
+                        "authorId": "1704657",
+                        "name": "D. Duvenaud"
+                    }
+                ],
+                "citationCount": 2553,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "449310e3538b08b43227d660227dfd2875c3c3c1",
+                "referenceCount": 63,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Neural Ordinary Differential Equations",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2273072",
+                        "name": "Georg Ostrovski"
+                    },
+                    {
+                        "authorId": "2605877",
+                        "name": "Will Dabney"
+                    },
+                    {
+                        "authorId": "1708654",
+                        "name": "R. Munos"
+                    }
+                ],
+                "citationCount": 68,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "79815f31f42708fd59da345f8fa79f635a070730",
+                "referenceCount": 46,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Autoregressive Quantile Networks for Generative Modeling",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "39380386",
+                        "name": "Jianwen Xie"
+                    },
+                    {
+                        "authorId": "49774254",
+                        "name": "Zilong Zheng"
+                    },
+                    {
+                        "authorId": "9659905",
+                        "name": "Ruiqi Gao"
+                    },
+                    {
+                        "authorId": "2693875",
+                        "name": "Wenguan Wang"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 112,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "c10ad19c33025e05f51e16ba871b4f4a2c418fe6",
+                "referenceCount": 36,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Learning Descriptor Networks for 3D Shape Synthesis and Analysis",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    },
+                    {
+                        "authorId": "152585800",
+                        "name": "Erich Elsen"
+                    },
+                    {
+                        "authorId": "34838386",
+                        "name": "K. Simonyan"
+                    },
+                    {
+                        "authorId": "30155667",
+                        "name": "Seb Noury"
+                    },
+                    {
+                        "authorId": "2670752",
+                        "name": "Norman Casagrande"
+                    },
+                    {
+                        "authorId": "49860549",
+                        "name": "Edward Lockhart"
+                    },
+                    {
+                        "authorId": "3205302",
+                        "name": "Florian Stimberg"
+                    },
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "48373216",
+                        "name": "S. Dieleman"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    }
+                ],
+                "citationCount": 678,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Engineering"
+                ],
+                "paperId": "f2c882fd290d616ff96c1c5d6af4578682e26556",
+                "referenceCount": 32,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Engineering",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Efficient Neural Audio Synthesis",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3213400",
+                        "name": "Takeru Miyato"
+                    },
+                    {
+                        "authorId": "2056971870",
+                        "name": "Toshiki Kataoka"
+                    },
+                    {
+                        "authorId": "2877296",
+                        "name": "Masanori Koyama"
+                    },
+                    {
+                        "authorId": "51462146",
+                        "name": "Yuichi Yoshida"
+                    }
+                ],
+                "citationCount": 3395,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "84de7d27e2f6160f634a483e8548c499a2cda7fa",
+                "referenceCount": 47,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Spectral Normalization for Generative Adversarial Networks",
+                "year": 2018
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "41192764",
+                        "name": "Xi Chen"
+                    },
+                    {
+                        "authorId": "3414570",
+                        "name": "Nikhil Mishra"
+                    },
+                    {
+                        "authorId": "22222033",
+                        "name": "Mostafa Rohaninejad"
+                    },
+                    {
+                        "authorId": "1689992",
+                        "name": "P. Abbeel"
+                    }
+                ],
+                "citationCount": 182,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "d1c424c261c577958917055f72fb9e2ad0348865",
+                "referenceCount": 38,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "PixelSNAIL: An Improved Autoregressive Generative Model",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "153461979",
+                        "name": "Daniel L\u00e9vy"
+                    },
+                    {
+                        "authorId": "28552618",
+                        "name": "M. Hoffman"
+                    },
+                    {
+                        "authorId": "1407546424",
+                        "name": "Jascha Narain Sohl-Dickstein"
+                    }
+                ],
+                "citationCount": 108,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "b7c7b4bbda0a90d3e22e8f1207e3d3226e711a84",
+                "referenceCount": 54,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generalizing Hamiltonian Monte Carlo with Neural Networks",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "39849136",
+                        "name": "X. Wang"
+                    },
+                    {
+                        "authorId": "2983898",
+                        "name": "Ross B. Girshick"
+                    },
+                    {
+                        "authorId": "1726095131",
+                        "name": "A. Gupta"
+                    },
+                    {
+                        "authorId": "39353098",
+                        "name": "Kaiming He"
+                    }
+                ],
+                "citationCount": 5908,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+                "referenceCount": 56,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Non-local Neural Networks",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2976930",
+                        "name": "Tero Karras"
+                    },
+                    {
+                        "authorId": "1761103",
+                        "name": "Timo Aila"
+                    },
+                    {
+                        "authorId": "36436218",
+                        "name": "S. Laine"
+                    },
+                    {
+                        "authorId": "49244945",
+                        "name": "J. Lehtinen"
+                    }
+                ],
+                "citationCount": 5091,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+                "referenceCount": 59,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "9659905",
+                        "name": "Ruiqi Gao"
+                    },
+                    {
+                        "authorId": "2146558486",
+                        "name": "Yang Lu"
+                    },
+                    {
+                        "authorId": "4645572",
+                        "name": "Junpei Zhou"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 67,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "c62e11dee8c687a226cfb398285246e8f938391b",
+                "referenceCount": 51,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Learning Generative ConvNets via Multi-grid Modeling and Sampling",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1996705",
+                        "name": "Anirudh Goyal"
+                    },
+                    {
+                        "authorId": "145604319",
+                        "name": "Nan Rosemary Ke"
+                    },
+                    {
+                        "authorId": "25769960",
+                        "name": "S. Ganguli"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 50,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "99c81b2dc2a5def38f62db269bba7765cff129e0",
+                "referenceCount": 36,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Variational Walkback: Learning a Transition Operator as a Stochastic Recurrent Net",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2445103",
+                        "name": "M. Heusel"
+                    },
+                    {
+                        "authorId": "19219270",
+                        "name": "Hubert Ramsauer"
+                    },
+                    {
+                        "authorId": "2465270",
+                        "name": "Thomas Unterthiner"
+                    },
+                    {
+                        "authorId": "37082831",
+                        "name": "Bernhard Nessler"
+                    },
+                    {
+                        "authorId": "3308557",
+                        "name": "S. Hochreiter"
+                    }
+                ],
+                "citationCount": 6534,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+                "referenceCount": 71,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "40348417",
+                        "name": "Ashish Vaswani"
+                    },
+                    {
+                        "authorId": "1846258",
+                        "name": "Noam M. Shazeer"
+                    },
+                    {
+                        "authorId": "3877127",
+                        "name": "Niki Parmar"
+                    },
+                    {
+                        "authorId": "39328010",
+                        "name": "Jakob Uszkoreit"
+                    },
+                    {
+                        "authorId": "145024664",
+                        "name": "Llion Jones"
+                    },
+                    {
+                        "authorId": "19177000",
+                        "name": "Aidan N. Gomez"
+                    },
+                    {
+                        "authorId": "40527594",
+                        "name": "Lukasz Kaiser"
+                    },
+                    {
+                        "authorId": "3443442",
+                        "name": "Illia Polosukhin"
+                    }
+                ],
+                "citationCount": 56012,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+                "referenceCount": 39,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Attention is All you Need",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "51453887",
+                        "name": "Jiaming Song"
+                    },
+                    {
+                        "authorId": "3303970",
+                        "name": "Shengjia Zhao"
+                    },
+                    {
+                        "authorId": "2490652",
+                        "name": "S. Ermon"
+                    }
+                ],
+                "citationCount": 91,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "ff1ee941c8fe334afd7dcd92b5c4478c0ae16efe",
+                "referenceCount": 42,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "A-NICE-MC: Adversarial Training for MCMC",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "34651419",
+                        "name": "Florian Bordes"
+                    },
+                    {
+                        "authorId": "25056820",
+                        "name": "S. Honari"
+                    },
+                    {
+                        "authorId": "145467703",
+                        "name": "Pascal Vincent"
+                    }
+                ],
+                "citationCount": 35,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "d2860bb05f747e4628e95e4d84018263831bab0d",
+                "referenceCount": 30,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Learning to Generate Samples from Noise through Infusion Training",
+                "year": 2017
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [],
+                "citationCount": 0,
+                "fieldsOfStudy": null,
+                "paperId": "66386a946a04534275bd466862364d139790f41f",
+                "referenceCount": 0,
+                "s2FieldsOfStudy": [],
+                "title": "P IXEL",
+                "year": null
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "39051054",
+                        "name": "I. Higgins"
+                    },
+                    {
+                        "authorId": "2367480",
+                        "name": "L. Matthey"
+                    },
+                    {
+                        "authorId": "3422676",
+                        "name": "Arka Pal"
+                    },
+                    {
+                        "authorId": "145463968",
+                        "name": "Christopher P. Burgess"
+                    },
+                    {
+                        "authorId": "3119801",
+                        "name": "Xavier Glorot"
+                    },
+                    {
+                        "authorId": "46378362",
+                        "name": "M. Botvinick"
+                    },
+                    {
+                        "authorId": "14594344",
+                        "name": "S. Mohamed"
+                    },
+                    {
+                        "authorId": "2289726",
+                        "name": "Alexander Lerchner"
+                    }
+                ],
+                "citationCount": 3428,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "a90226c41b79f8b06007609f39f82757073641e2",
+                "referenceCount": 28,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    },
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "34838386",
+                        "name": "K. Simonyan"
+                    },
+                    {
+                        "authorId": "1841008",
+                        "name": "Ivo Danihelka"
+                    },
+                    {
+                        "authorId": "1689108",
+                        "name": "Oriol Vinyals"
+                    },
+                    {
+                        "authorId": "1753223",
+                        "name": "A. Graves"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    }
+                ],
+                "citationCount": 349,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+                "referenceCount": 20,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Video Pixel Networks",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    },
+                    {
+                        "authorId": "2887364",
+                        "name": "Tim Salimans"
+                    },
+                    {
+                        "authorId": "1678311",
+                        "name": "M. Welling"
+                    }
+                ],
+                "citationCount": 1454,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+                "referenceCount": 37,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Improved Variational Inference with Inverse Autoregressive Flow",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "39380386",
+                        "name": "Jianwen Xie"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 88,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "f909213520fdb58ac30f60a81d9fd3ca665b638c",
+                "referenceCount": 35,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Synthesizing Dynamic Patterns by Spatial-Temporal Generative ConvNet",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "46573521",
+                        "name": "Laurent Dinh"
+                    },
+                    {
+                        "authorId": "1407546424",
+                        "name": "Jascha Narain Sohl-Dickstein"
+                    },
+                    {
+                        "authorId": "1751569",
+                        "name": "Samy Bengio"
+                    }
+                ],
+                "citationCount": 2381,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+                "referenceCount": 78,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Density estimation using Real NVP",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "48373216",
+                        "name": "S. Dieleman"
+                    },
+                    {
+                        "authorId": "1691713",
+                        "name": "H. Zen"
+                    },
+                    {
+                        "authorId": "34838386",
+                        "name": "K. Simonyan"
+                    },
+                    {
+                        "authorId": "1689108",
+                        "name": "Oriol Vinyals"
+                    },
+                    {
+                        "authorId": "1753223",
+                        "name": "A. Graves"
+                    },
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    },
+                    {
+                        "authorId": "33666044",
+                        "name": "A. Senior"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    }
+                ],
+                "citationCount": 5638,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+                "referenceCount": 65,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "WaveNet: A Generative Model for Raw Audio",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    },
+                    {
+                        "authorId": "2311318",
+                        "name": "Lasse Espeholt"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    },
+                    {
+                        "authorId": "1689108",
+                        "name": "Oriol Vinyals"
+                    },
+                    {
+                        "authorId": "1753223",
+                        "name": "A. Graves"
+                    }
+                ],
+                "citationCount": 1904,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+                "referenceCount": 33,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Conditional Image Generation with PixelCNN Decoders",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2887364",
+                        "name": "Tim Salimans"
+                    },
+                    {
+                        "authorId": "153440022",
+                        "name": "Ian J. Goodfellow"
+                    },
+                    {
+                        "authorId": "2563432",
+                        "name": "Wojciech Zaremba"
+                    },
+                    {
+                        "authorId": "34415167",
+                        "name": "Vicki Cheung"
+                    },
+                    {
+                        "authorId": "38909097",
+                        "name": "Alec Radford"
+                    },
+                    {
+                        "authorId": "41192764",
+                        "name": "Xi Chen"
+                    }
+                ],
+                "citationCount": 6698,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+                "referenceCount": 27,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Improved Techniques for Training GANs",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2134433",
+                        "name": "Sergey Zagoruyko"
+                    },
+                    {
+                        "authorId": "2505902",
+                        "name": "N. Komodakis"
+                    }
+                ],
+                "citationCount": 5380,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+                "referenceCount": 32,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Wide Residual Networks",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "144717963",
+                        "name": "Karol Gregor"
+                    },
+                    {
+                        "authorId": "143923544",
+                        "name": "F. Besse"
+                    },
+                    {
+                        "authorId": "1748523",
+                        "name": "Danilo Jimenez Rezende"
+                    },
+                    {
+                        "authorId": "1841008",
+                        "name": "Ivo Danihelka"
+                    },
+                    {
+                        "authorId": "1688276",
+                        "name": "Daan Wierstra"
+                    }
+                ],
+                "citationCount": 222,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+                "referenceCount": 29,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Towards Conceptual Compression",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2887364",
+                        "name": "Tim Salimans"
+                    },
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    }
+                ],
+                "citationCount": 1520,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+                "referenceCount": 34,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "39380386",
+                        "name": "Jianwen Xie"
+                    },
+                    {
+                        "authorId": "2146558486",
+                        "name": "Yang Lu"
+                    },
+                    {
+                        "authorId": "145380991",
+                        "name": "Song-Chun Zhu"
+                    },
+                    {
+                        "authorId": "39092098",
+                        "name": "Y. Wu"
+                    }
+                ],
+                "citationCount": 241,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "2da0ccacb4931f1e89cf7febdafd23a3cff079a4",
+                "referenceCount": 46,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "A Theory of Generative ConvNet",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3422336",
+                        "name": "A\u00e4ron van den Oord"
+                    },
+                    {
+                        "authorId": "2583391",
+                        "name": "Nal Kalchbrenner"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    }
+                ],
+                "citationCount": 2017,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+                "referenceCount": 34,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Pixel Recurrent Neural Networks",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [],
+                "citationCount": null,
+                "fieldsOfStudy": null,
+                "paperId": null,
+                "referenceCount": null,
+                "s2FieldsOfStudy": null,
+                "title": "GSNs: generative stochastic networks. Information and Inference: A",
+                "year": 2016
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1807197",
+                        "name": "F. Yu"
+                    },
+                    {
+                        "authorId": "1591143181",
+                        "name": "Yinda Zhang"
+                    },
+                    {
+                        "authorId": "3340170",
+                        "name": "Shuran Song"
+                    },
+                    {
+                        "authorId": "2233674",
+                        "name": "Ari Seff"
+                    },
+                    {
+                        "authorId": "40599257",
+                        "name": "Jianxiong Xiao"
+                    }
+                ],
+                "citationCount": 1460,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+                "referenceCount": 26,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop",
+                "year": 2015
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1748523",
+                        "name": "Danilo Jimenez Rezende"
+                    },
+                    {
+                        "authorId": "14594344",
+                        "name": "S. Mohamed"
+                    }
+                ],
+                "citationCount": 2645,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+                "referenceCount": 40,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Variational Inference with Normalizing Flows",
+                "year": 2015
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1737326",
+                        "name": "O. Ronneberger"
+                    },
+                    {
+                        "authorId": "152702479",
+                        "name": "P. Fischer"
+                    },
+                    {
+                        "authorId": "1710872",
+                        "name": "T. Brox"
+                    }
+                ],
+                "citationCount": 45571,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
+                "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+                "referenceCount": 16,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+                "year": 2015
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1407546424",
+                        "name": "Jascha Narain Sohl-Dickstein"
+                    },
+                    {
+                        "authorId": "2144479710",
+                        "name": "Eric A. Weiss"
+                    },
+                    {
+                        "authorId": "2333223",
+                        "name": "Niru Maheswaranathan"
+                    },
+                    {
+                        "authorId": "25769960",
+                        "name": "S. Ganguli"
+                    }
+                ],
+                "citationCount": 1206,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+                "referenceCount": 59,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+                "year": 2015
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    },
+                    {
+                        "authorId": "2503659",
+                        "name": "Jimmy Ba"
+                    }
+                ],
+                "citationCount": 114444,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+                "referenceCount": 29,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Adam: A Method for Stochastic Optimization",
+                "year": 2014
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "46573521",
+                        "name": "Laurent Dinh"
+                    },
+                    {
+                        "authorId": "145055042",
+                        "name": "David Krueger"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 1535,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+                "referenceCount": 36,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "NICE: Non-linear Independent Components Estimation",
+                "year": 2014
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2887364",
+                        "name": "Tim Salimans"
+                    },
+                    {
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
+                    },
+                    {
+                        "authorId": "1678311",
+                        "name": "M. Welling"
+                    }
+                ],
+                "citationCount": 492,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "7198597c62f6b6433d9ed6d5b44f887bd05d3c56",
+                "referenceCount": 19,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap",
+                "year": 2014
             }
         },
         {
@@ -83,421 +2948,184 @@
                     }
                 ],
                 "citationCount": 36750,
+                "fieldsOfStudy": [
+                    "Computer Science"
+                ],
                 "paperId": "54e325aee6b2d476bbbb88615ac15e251c6e8214",
                 "referenceCount": 35,
-                "title": "Generative Adversarial Nets"
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Generative Adversarial Nets",
+                "year": 2014
             }
         },
         {
             "citedPaper": {
                 "authors": [
                     {
-                        "authorId": "3450996",
-                        "name": "Ryan Kiros"
+                        "authorId": "1748523",
+                        "name": "Danilo Jimenez Rezende"
                     },
                     {
-                        "authorId": "145124475",
-                        "name": "R. Salakhutdinov"
+                        "authorId": "14594344",
+                        "name": "S. Mohamed"
                     },
                     {
-                        "authorId": "1804104",
-                        "name": "R. Zemel"
+                        "authorId": "1688276",
+                        "name": "Daan Wierstra"
                     }
                 ],
-                "citationCount": 626,
-                "paperId": "fad611e35b3731740b4d8b754241e77add5a70b9",
+                "citationCount": 4398,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
                 "referenceCount": 39,
-                "title": "Multimodal Neural Language Models"
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models",
+                "year": 2014
             }
         },
         {
             "citedPaper": {
                 "authors": [
                     {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
+                        "authorId": "1726807",
+                        "name": "Diederik P. Kingma"
                     },
                     {
-                        "authorId": "1398746441",
-                        "name": "Eric Thibodeau-Laufer"
-                    },
-                    {
-                        "authorId": "1815021",
-                        "name": "Guillaume Alain"
-                    },
-                    {
-                        "authorId": "2965424",
-                        "name": "J. Yosinski"
+                        "authorId": "1678311",
+                        "name": "M. Welling"
                     }
                 ],
-                "citationCount": 379,
-                "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
-                "referenceCount": 42,
-                "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+                "citationCount": 21333,
+                "fieldsOfStudy": [
+                    "Mathematics",
+                    "Computer Science"
+                ],
+                "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+                "referenceCount": 24,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "Auto-Encoding Variational Bayes",
+                "year": 2013
             }
         },
         {
             "citedPaper": {
                 "authors": [
                     {
-                        "authorId": "153440022",
-                        "name": "Ian J. Goodfellow"
-                    },
-                    {
-                        "authorId": "153583218",
-                        "name": "Mehdi Mirza"
-                    },
-                    {
-                        "authorId": "1760871",
-                        "name": "Aaron C. Courville"
-                    },
-                    {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
+                        "authorId": "145467703",
+                        "name": "Pascal Vincent"
                     }
                 ],
-                "citationCount": 134,
-                "paperId": "5656fa5aa6e1beeb98703fc53ec112ad227c49ca",
-                "referenceCount": 27,
-                "title": "Multi-Prediction Deep Boltzmann Machines"
+                "citationCount": 636,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics",
+                    "Medicine"
+                ],
+                "paperId": "872bae24c109f7c30e052ac218b17a8b028d08a0",
+                "referenceCount": 23,
+                "s2FieldsOfStudy": [
+                    {
+                        "category": "Computer Science",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Mathematics",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Medicine",
+                        "source": "external"
+                    },
+                    {
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
+                    }
+                ],
+                "title": "A Connection Between Score Matching and Denoising Autoencoders",
+                "year": 2011
             }
         },
         {
             "citedPaper": {
                 "authors": [
                     {
-                        "authorId": "2279670",
-                        "name": "Andrea Frome"
+                        "authorId": "145352587",
+                        "name": "P. Harsha"
                     },
                     {
-                        "authorId": "32131713",
-                        "name": "G. Corrado"
+                        "authorId": "145758609",
+                        "name": "Rahul Jain"
                     },
                     {
-                        "authorId": "1789737",
-                        "name": "Jonathon Shlens"
+                        "authorId": "145689002",
+                        "name": "David A. McAllester"
                     },
                     {
-                        "authorId": "1751569",
-                        "name": "Samy Bengio"
-                    },
-                    {
-                        "authorId": "49959210",
-                        "name": "J. Dean"
-                    },
-                    {
-                        "authorId": "1706809",
-                        "name": "M. Ranzato"
-                    },
-                    {
-                        "authorId": "2047446108",
-                        "name": "Tomas Mikolov"
+                        "authorId": "1680911",
+                        "name": "J. Radhakrishnan"
                     }
                 ],
-                "citationCount": 2239,
-                "paperId": "4aa4069693bee00d1b0759ca3df35e59284e9845",
-                "referenceCount": 22,
-                "title": "DeViSE: A Deep Visual-Semantic Embedding Model"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
+                "citationCount": 174,
+                "fieldsOfStudy": [
+                    "Computer Science",
+                    "Mathematics"
+                ],
+                "paperId": "e4fe1204c1ab874c833b78d9c761e7fdfbd78c43",
+                "referenceCount": 29,
+                "s2FieldsOfStudy": [
                     {
-                        "authorId": "153440022",
-                        "name": "Ian J. Goodfellow"
+                        "category": "Computer Science",
+                        "source": "external"
                     },
                     {
-                        "authorId": "1393680089",
-                        "name": "David Warde-Farley"
+                        "category": "Mathematics",
+                        "source": "external"
                     },
                     {
-                        "authorId": "3087941",
-                        "name": "Pascal Lamblin"
-                    },
-                    {
-                        "authorId": "3074927",
-                        "name": "Vincent Dumoulin"
-                    },
-                    {
-                        "authorId": "153583218",
-                        "name": "Mehdi Mirza"
-                    },
-                    {
-                        "authorId": "1996134",
-                        "name": "Razvan Pascanu"
-                    },
-                    {
-                        "authorId": "32837403",
-                        "name": "J. Bergstra"
-                    },
-                    {
-                        "authorId": "3227028",
-                        "name": "Fr\u00e9d\u00e9ric Bastien"
-                    },
-                    {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
+                        "category": "Computer Science",
+                        "source": "s2-fos-model"
                     }
                 ],
-                "citationCount": 306,
-                "paperId": "836acf6fc99ebf81d219e2b67f7ab25efc29a6a4",
-                "referenceCount": 60,
-                "title": "Pylearn2: a machine learning research library"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "153440022",
-                        "name": "Ian J. Goodfellow"
-                    },
-                    {
-                        "authorId": "1393680089",
-                        "name": "David Warde-Farley"
-                    },
-                    {
-                        "authorId": "153583218",
-                        "name": "Mehdi Mirza"
-                    },
-                    {
-                        "authorId": "1760871",
-                        "name": "Aaron C. Courville"
-                    },
-                    {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
-                    }
-                ],
-                "citationCount": 1961,
-                "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
-                "referenceCount": 25,
-                "title": "Maxout Networks"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "2047446108",
-                        "name": "Tomas Mikolov"
-                    },
-                    {
-                        "authorId": "2118440152",
-                        "name": "Kai Chen"
-                    },
-                    {
-                        "authorId": "32131713",
-                        "name": "G. Corrado"
-                    },
-                    {
-                        "authorId": "49959210",
-                        "name": "J. Dean"
-                    }
-                ],
-                "citationCount": 25668,
-                "paperId": "330da625c15427c6e42ccfa3b747fb29e5835bf0",
-                "referenceCount": 36,
-                "title": "Efficient Estimation of Word Representations in Vector Space"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
-                    },
-                    {
-                        "authorId": "1935910",
-                        "name": "Gr\u00e9goire Mesnil"
-                    },
-                    {
-                        "authorId": "2921469",
-                        "name": "Y. Dauphin"
-                    },
-                    {
-                        "authorId": "2425018",
-                        "name": "S. Rifai"
-                    }
-                ],
-                "citationCount": 298,
-                "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
-                "referenceCount": 43,
-                "title": "Better Mixing via Deep Representations"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "2064160",
-                        "name": "A. Krizhevsky"
-                    },
-                    {
-                        "authorId": "1701686",
-                        "name": "Ilya Sutskever"
-                    },
-                    {
-                        "authorId": "1695689",
-                        "name": "Geoffrey E. Hinton"
-                    }
-                ],
-                "citationCount": 96620,
-                "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
-                "referenceCount": 44,
-                "title": "ImageNet classification with deep convolutional neural networks"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "2897313",
-                        "name": "Nitish Srivastava"
-                    },
-                    {
-                        "authorId": "145124475",
-                        "name": "R. Salakhutdinov"
-                    }
-                ],
-                "citationCount": 1605,
-                "paperId": "5726c7b40fcc454b77d989656c085520bf6c15fa",
-                "referenceCount": 43,
-                "title": "Multimodal learning with deep Boltzmann machines"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "1695689",
-                        "name": "Geoffrey E. Hinton"
-                    },
-                    {
-                        "authorId": "2897313",
-                        "name": "Nitish Srivastava"
-                    },
-                    {
-                        "authorId": "2064160",
-                        "name": "A. Krizhevsky"
-                    },
-                    {
-                        "authorId": "1701686",
-                        "name": "Ilya Sutskever"
-                    },
-                    {
-                        "authorId": "145124475",
-                        "name": "R. Salakhutdinov"
-                    }
-                ],
-                "citationCount": 6882,
-                "paperId": "1366de5bb112746a555e9c0cd00de3ad8628aea8",
-                "referenceCount": 27,
-                "title": "Improving neural networks by preventing co-adaptation of feature detectors"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "3119801",
-                        "name": "Xavier Glorot"
-                    },
-                    {
-                        "authorId": "1713934",
-                        "name": "Antoine Bordes"
-                    },
-                    {
-                        "authorId": "1751762",
-                        "name": "Yoshua Bengio"
-                    }
-                ],
-                "citationCount": 6960,
-                "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
-                "referenceCount": 37,
-                "title": "Deep Sparse Rectifier Neural Networks"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "2192178",
-                        "name": "Olga Russakovsky"
-                    },
-                    {
-                        "authorId": "48004138",
-                        "name": "Li Fei-Fei"
-                    }
-                ],
-                "citationCount": 197,
-                "paperId": "c77f1d5c9460409cdab8cf53432cb238a8105c05",
-                "referenceCount": 19,
-                "title": "Attribute Learning in Large-Scale Datasets"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "145992652",
-                        "name": "Michael U Gutmann"
-                    },
-                    {
-                        "authorId": "1791548",
-                        "name": "Aapo Hyv\u00e4rinen"
-                    }
-                ],
-                "citationCount": 1571,
-                "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
-                "referenceCount": 15,
-                "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "2077257730",
-                        "name": "Kevin Jarrett"
-                    },
-                    {
-                        "authorId": "2645384",
-                        "name": "K. Kavukcuoglu"
-                    },
-                    {
-                        "authorId": "1706809",
-                        "name": "M. Ranzato"
-                    },
-                    {
-                        "authorId": "1688882",
-                        "name": "Yann LeCun"
-                    }
-                ],
-                "citationCount": 2241,
-                "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
-                "referenceCount": 53,
-                "title": "What is the best multi-stage architecture for object recognition?"
-            }
-        },
-        {
-            "citedPaper": {
-                "authors": [
-                    {
-                        "authorId": "1753110",
-                        "name": "M. Huiskes"
-                    },
-                    {
-                        "authorId": "1731570",
-                        "name": "M. Lew"
-                    }
-                ],
-                "citationCount": 1399,
-                "paperId": "f79131806747fce087d0fe73d0867cc621547b2a",
-                "referenceCount": 14,
-                "title": "The MIR flickr retrieval evaluation"
+                "title": "The Communication Complexity of Correlation",
+                "year": 2007
             }
         }
     ],
