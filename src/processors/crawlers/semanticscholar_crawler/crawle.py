@@ -40,6 +40,14 @@ def url2pid(url):
     return pid
 
 
+def url2title(url):
+    url = url.strip()
+    base_url = url.split('?', 1)[0]
+    title = base_url.split('/')[-2]
+    title = ' '.join(title.split('-'))
+    return title
+
+
 def get_oupout_filename(pid: str, request_config: RequestConfig):
     local_cache_root = os.path.expanduser(crawler_config.local_cache_root)
 
@@ -51,7 +59,7 @@ def get_oupout_filename(pid: str, request_config: RequestConfig):
     return os.path.join(output_dir, '%s.json' % pid)
 
 
-def add_paper_to_tasks(tasks, pid=None, page_url=None, title='', skip_exists=True) -> int:
+def add_paper_to_tasks(tasks, pid=None, page_url=None, title=None, skip_exists=True) -> int:
     added_cnt = 0
 
     if [pid, page_url].count(None) != 1:
@@ -59,6 +67,11 @@ def add_paper_to_tasks(tasks, pid=None, page_url=None, title='', skip_exists=Tru
 
     if pid is None:
         pid = url2pid(page_url)
+
+    if title is None and page_url is not None:
+        title = url2title(page_url)
+    assert title is not None, 'title must be set if pid is used'
+    # title = title or ''
 
     paper_task = PaperTask()
     paper_task.pid = pid
@@ -92,6 +105,7 @@ def add_subtask(task: PaperTask, request_type: RequestType, pid: str, skip_exist
 
     subtask = DownloaderTask()
     subtask.pid = pid
+    subtask.task_name = RequestType.Name(request_type).lower()
     subtask.request_config.CopyFrom(request_config)
     subtask.output_file = output_file
 
@@ -100,10 +114,6 @@ def add_subtask(task: PaperTask, request_type: RequestType, pid: str, skip_exist
 
     added_cnt += 1
     return added_cnt
-
-
-def find_valuable_links(links_pool, max_count=30):
-    return []
 
 
 def add_to_links_pool(links_pool, links):
@@ -189,29 +199,31 @@ def main():
     for url in seed_urls:
         add_paper_to_tasks(tasks, page_url=url, skip_exists=False)
 
-    new_links = run_downloader_tasks(tasks)
+    new_links = run_downloader_tasks(tasks, log_prefix=' of seed_urls.')
 
     max_round = 2
     max_paper_in_round = 3
     for round in range(1, max_round+1):
         new_links_cnt = len(new_links)
         added_cnt_pool = add_to_links_pool(links_pool, new_links)
-        logger.info('added %s/%s links to pool, %s duplicated' % (added_cnt_pool, new_links_cnt, new_links_cnt - added_cnt_pool))
+        logger.debug('added %s/%s links to pool, %s duplicated' % (added_cnt_pool, new_links_cnt, new_links_cnt - added_cnt_pool))
 
         # step 2, find valuable links
         valid_links = sort_valid_links(links_pool)
-        logger.info('found %s/%s valid links' % (len(valid_links), len(links_pool)))
+        logger.debug('found %s/%s valid links' % (len(valid_links), len(links_pool)))
 
         valuable_cnt = min(max_paper_in_round, int(len(valid_links) * 0.01))
         tasks = []
-        for l in valid_links[:valuable_cnt]:
-            add_paper_to_tasks(tasks, pid=l['paperId'])
+        for link in valid_links[:valuable_cnt]:
+            add_paper_to_tasks(tasks, pid=link['paperId'], title=link['title'])
 
-        logger.info('round (%s/%s), %s new tasks. link_pool: %s, valid_links: %s' % (
-            round, max_round, len(tasks), len(links_pool), len(valid_links)
+        logger.info('=== round %s info ===, %s new tasks. link_pool: %s, valid_links: %s, valuable_cnt: %s' % (
+            round, len(tasks), len(links_pool), len(valid_links), valuable_cnt
         ))
+        if len(tasks) == 0:
+            break
 
-        new_links = run_downloader_tasks(tasks)
+        new_links = run_downloader_tasks(tasks, log_prefix=' of round %s/%s.' % (round, max_round))
 
 
 if __name__ == '__main__':

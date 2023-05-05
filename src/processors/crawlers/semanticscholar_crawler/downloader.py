@@ -39,9 +39,9 @@ def run_tasks(task_args: list[PaperTask], log_prefix: str = ''):
             key = '%s_cnt' % subtask.task_name
             res_info[key] = len(new_links)
 
-        msg = '%s(%s/%s) downloaded %s. pid: %s, title: %s' % (
-            log_prefix, idx + 1, task_cnt,
-            str(res_info), task.pid, task.title)
+        msg = '(%s/%s)%s downloaded %s. title: %s, pid: %s' % (
+            idx + 1, task_cnt, log_prefix,
+            str(res_info), task.title, task.pid)
 
         logger.info(msg)
 
