@@ -205,7 +205,7 @@ def pick_top(yearly_links):
 def find_valuable_links(valid_links):
     yearly_groups = {}
     for link in valid_links:
-        key = int(link['year'])
+        key = int(link['year'] or 1900)
         yearly_groups.setdefault(key, []).append(link)
 
     valuable_links = []
