@@ -93,12 +93,83 @@ def find_valuable_links(links_pool, max_count=30):
     return []
 
 
+def add_to_links_pool(links_pool, links):
+    old_cnt = len(links_pool)
+
+    for link in links:
+        if len(link) == 1:
+            link = link.popitem()[1]
+
+        pid = link['paperId']
+        # overwrite if exists
+        if pid not in links_pool:
+            links_pool[pid] = link
+        else:
+            links_pool[pid].update(link)
+
+    added_cnt = len(links_pool) - old_cnt
+    return added_cnt
+
+
+def sort_valid_links(links_pool):
+    valid_links = []
+    drop_stat = {
+        'no_fieldsOfStudy': 0,
+        'citationCount_lt_10': 0,
+        'fieldsOfStudy_not_in': 0,
+    }
+
+    sfields = {
+        'Computer Science',
+    }
+    sfields_found = set()
+
+    for pid, link in links_pool.items():
+        if pid is None:
+            continue
+
+        if not isinstance(link['citationCount'], int):
+            print(link)
+            break
+
+        if link['citationCount'] < 10:
+            drop_stat['citationCount_lt_10'] += 1
+            continue
+
+        if link.get('fieldsOfStudy') is None:
+            drop_stat['no_fieldsOfStudy'] += 1
+            continue
+
+        fieldsOfStudy = set(link['fieldsOfStudy'])
+
+        if len(fieldsOfStudy) == 0:
+            drop_stat['no_fieldsOfStudy'] += 1
+            continue
+
+        sfields_found.update(fieldsOfStudy)
+        if len(fieldsOfStudy & sfields) == 0:
+            drop_stat['fieldsOfStudy_not_in'] += 1
+            continue
+
+        valid_links.append(link)
+
+    logger.info('drop stat: %s' % drop_stat)
+
+    # sort by citationCount
+    valid_links.sort(key=lambda x: x['citationCount'], reverse=True)
+
+    # save valid links for debug
+    # with open('valid_links.json', 'w') as f:
+    #     import json
+    #     json.dump(valid_links, f, indent=4)
+
+    return valid_links
+
+
 def main():
     seed_urls = load_seed_urls()
 
     links_pool = {}
-    valid_links = {}
-    valuable_links = {}
 
     # step 1, download seed_urls ref and citation
     tasks = []
@@ -106,26 +177,28 @@ def main():
         add_paper_to_tasks(tasks, page_url=url)
 
     new_links = run_downloader_tasks(tasks)
-    # links_pool.append(new_links)
 
-    # max_round = 100
-    # for round in range(1, max_round+1):
-    #     new_tasks = find_valuable_links(links_pool)
-    #     logger.info('round (%s/%s), %s new tasks. total links: %s' % (
-    #         round, max_round, len(new_tasks), len(links_pool)
-    #     ))
+    max_round = 2
+    max_paper_in_round = 3
+    for round in range(1, max_round+1):
+        new_links_cnt = len(new_links)
+        added_cnt_pool = add_to_links_pool(links_pool, new_links)
+        logger.info('added %s/%s links to pool, %s duplicated' % (added_cnt_pool, new_links_cnt, new_links_cnt - added_cnt_pool))
 
-    #     new_links = run_downloader_tasks(tasks)
-    #     links_pool.append(new_links)
+        # step 2, find valuable links
+        valid_links = sort_valid_links(links_pool)
+        logger.info('found %s/%s valid links' % (len(valid_links), len(links_pool)))
 
-    # step 2, download references of existing papers
-    # for ref in new_links:
-    #     if 'id' not in ref or 'slug' not in ref:
-    #         continue
-    #     pid = ref['id']
-    #     url = url_ptn % (ref['slug'], pid)
+        valuable_cnt = min(max_paper_in_round, int(len(valid_links) * 0.01))
+        tasks = []
+        for l in valid_links[:valuable_cnt]:
+            add_paper_to_tasks(tasks, pid=l['paperId'])
 
-    #     add_to_tasks(tasks, RequestType.REFERENCE, page_url=url, pid=pid)
+        logger.info('round (%s/%s), %s new tasks. link_pool: %s, valid_links: %s' % (
+            round, max_round, len(tasks), len(links_pool), len(valid_links)
+        ))
+
+        new_links = run_downloader_tasks(tasks)
 
 
 if __name__ == '__main__':
