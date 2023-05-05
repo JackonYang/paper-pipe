@@ -9,6 +9,7 @@ from configs_pb2.crawler_config_pb2 import (
 from configs_pb2.api_spec_pb2 import DownloaderTask
 
 from . import request_citation
+from . import request_reference
 
 import logging
 
@@ -17,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 req_func_map = {
     RequestType.CITATION: request_citation.send_request,
+    RequestType.REFERENCE: request_reference.send_request,
 }
 
 
@@ -96,7 +98,7 @@ def _run_downloader(pid: str, page_url: str,
 
     # step 2, download the rest pages
     for i in range(start_page + 1, total_pages + 1):
-        rsp = safe_send_req(pid, i, page_url)
+        rsp = safe_send_req(api_func, pid, i, page_url)
 
         if rsp is None:
             return

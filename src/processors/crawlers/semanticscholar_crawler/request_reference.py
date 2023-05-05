@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 def send_request(pid, page_no, referer):
 
     referer = quote(referer, safe='/:?=&')
-
     logger.debug('sending request... referer: %s' % referer)
 
     url = "https://www.semanticscholar.org/api/1/search/paper/%s/citations" % pid
@@ -22,7 +21,7 @@ def send_request(pid, page_no, referer):
         headers={
             "Authority": "www.semanticscholar.org",
             "Accept": "*/*",
-            "Accept-Language": "zh,zh-CN;q=0.9,en;q=0.8,en-US;q=0.7,zh-TW;q=0.6,fr;q=0.5",
+            "Accept-Language": "en-US,en;q=0.9",
             "Content-Type": "application/json",
             "Referer": referer,
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
@@ -30,7 +29,7 @@ def send_request(pid, page_no, referer):
         },
         data=json.dumps({
             "pageSize": 10,
-            "sort": "total-citations",
+            "sort": "relevance",
             "authors": [],
             "venues": [],
             "yearFilter": None,
@@ -38,7 +37,15 @@ def send_request(pid, page_no, referer):
             "fieldsOfStudy": [],
             "page": page_no,
             "coAuthors": [],
-            "citationType": "citingPapers"
+            "citationType": "citedPapers"
         })
     )
-    return response.json()
+
+    try:
+        rsp_json = response.json()
+    except requests.exceptions.JSONDecodeError:
+        print(response.text)
+        logger.warning('parse json error. page_no: %s, pid: %s' % (page_no, pid))
+        rsp_json = None
+
+    return rsp_json

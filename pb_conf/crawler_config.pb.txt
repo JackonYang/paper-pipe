@@ -17,7 +17,7 @@ semantic_scholar_config {
         max_pages: -1
         start_page: 1
 
-        links_key_in_response: "citations"
+        links_key_in_response: "results"
         output_dir: "semantic_scholar/references"
     }
 

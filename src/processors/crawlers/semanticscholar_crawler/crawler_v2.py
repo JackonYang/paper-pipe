@@ -22,6 +22,8 @@ logger = logging.getLogger(__name__)
 
 conf = crawler_config.semantic_scholar_config
 
+url_ptn = 'https://www.semanticscholar.org/paper/%s/%s?sort=total-citations'
+
 
 def load_seed_urls():
     seed_file = os.path.join(PROJECT_ROOT, conf.seed_file)
@@ -69,7 +71,6 @@ def add_to_tasks(tasks: list[DownloaderTask], request_type: RequestType,
     task = DownloaderTask()
     task.page_url = page_url
     task.pid = pid
-    task.request_type = request_type
     task.request_config.CopyFrom(request_config)
     task.output_file = output_file
 
@@ -80,10 +81,26 @@ def add_to_tasks(tasks: list[DownloaderTask], request_type: RequestType,
 def main():
     seed_urls = load_seed_urls()
 
-    # step1, download papers that cite seed papers
+    # step 1, download papers that cite seed papers
     tasks = []
     for url in seed_urls:
         add_to_tasks(tasks, RequestType.CITATION, url)
+
+    new_links = run_downloader_tasks(tasks)
+
+    # step 2, download references of existing papers
+    tasks = []
+    for url in seed_urls:
+        add_to_tasks(tasks, RequestType.REFERENCE, page_url=url)
+
+    # for ref in new_links:
+
+    #     if 'id' not in ref or 'slug' not in ref:
+    #         continue
+    #     pid = ref['id']
+    #     url = url_ptn % (ref['slug'], pid)
+
+    #     add_to_tasks(tasks, RequestType.REFERENCE, page_url=url, pid=pid)
 
     new_links = run_downloader_tasks(tasks)
 
