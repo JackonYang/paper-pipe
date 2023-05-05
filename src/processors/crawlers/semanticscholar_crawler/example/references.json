@@ -1,0 +1,505 @@
+{
+    "data": [
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2574060",
+                        "name": "Christian Szegedy"
+                    },
+                    {
+                        "authorId": "2157222093",
+                        "name": "Wei Liu"
+                    },
+                    {
+                        "authorId": "39978391",
+                        "name": "Yangqing Jia"
+                    },
+                    {
+                        "authorId": "3142556",
+                        "name": "P. Sermanet"
+                    },
+                    {
+                        "authorId": "144828948",
+                        "name": "Scott E. Reed"
+                    },
+                    {
+                        "authorId": "1838674",
+                        "name": "Dragomir Anguelov"
+                    },
+                    {
+                        "authorId": "1761978",
+                        "name": "D. Erhan"
+                    },
+                    {
+                        "authorId": "2657155",
+                        "name": "Vincent Vanhoucke"
+                    },
+                    {
+                        "authorId": "39863668",
+                        "name": "Andrew Rabinovich"
+                    }
+                ],
+                "citationCount": 35288,
+                "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+                "referenceCount": 264,
+                "title": "Going deeper with convolutions"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "153440022",
+                        "name": "Ian J. Goodfellow"
+                    },
+                    {
+                        "authorId": "1403025868",
+                        "name": "Jean Pouget-Abadie"
+                    },
+                    {
+                        "authorId": "153583218",
+                        "name": "Mehdi Mirza"
+                    },
+                    {
+                        "authorId": "2113742925",
+                        "name": "Bing Xu"
+                    },
+                    {
+                        "authorId": "1393680089",
+                        "name": "David Warde-Farley"
+                    },
+                    {
+                        "authorId": "1955694",
+                        "name": "Sherjil Ozair"
+                    },
+                    {
+                        "authorId": "1760871",
+                        "name": "Aaron C. Courville"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 36750,
+                "paperId": "54e325aee6b2d476bbbb88615ac15e251c6e8214",
+                "referenceCount": 35,
+                "title": "Generative Adversarial Nets"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3450996",
+                        "name": "Ryan Kiros"
+                    },
+                    {
+                        "authorId": "145124475",
+                        "name": "R. Salakhutdinov"
+                    },
+                    {
+                        "authorId": "1804104",
+                        "name": "R. Zemel"
+                    }
+                ],
+                "citationCount": 626,
+                "paperId": "fad611e35b3731740b4d8b754241e77add5a70b9",
+                "referenceCount": 39,
+                "title": "Multimodal Neural Language Models"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    },
+                    {
+                        "authorId": "1398746441",
+                        "name": "Eric Thibodeau-Laufer"
+                    },
+                    {
+                        "authorId": "1815021",
+                        "name": "Guillaume Alain"
+                    },
+                    {
+                        "authorId": "2965424",
+                        "name": "J. Yosinski"
+                    }
+                ],
+                "citationCount": 379,
+                "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+                "referenceCount": 42,
+                "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "153440022",
+                        "name": "Ian J. Goodfellow"
+                    },
+                    {
+                        "authorId": "153583218",
+                        "name": "Mehdi Mirza"
+                    },
+                    {
+                        "authorId": "1760871",
+                        "name": "Aaron C. Courville"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 134,
+                "paperId": "5656fa5aa6e1beeb98703fc53ec112ad227c49ca",
+                "referenceCount": 27,
+                "title": "Multi-Prediction Deep Boltzmann Machines"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2279670",
+                        "name": "Andrea Frome"
+                    },
+                    {
+                        "authorId": "32131713",
+                        "name": "G. Corrado"
+                    },
+                    {
+                        "authorId": "1789737",
+                        "name": "Jonathon Shlens"
+                    },
+                    {
+                        "authorId": "1751569",
+                        "name": "Samy Bengio"
+                    },
+                    {
+                        "authorId": "49959210",
+                        "name": "J. Dean"
+                    },
+                    {
+                        "authorId": "1706809",
+                        "name": "M. Ranzato"
+                    },
+                    {
+                        "authorId": "2047446108",
+                        "name": "Tomas Mikolov"
+                    }
+                ],
+                "citationCount": 2239,
+                "paperId": "4aa4069693bee00d1b0759ca3df35e59284e9845",
+                "referenceCount": 22,
+                "title": "DeViSE: A Deep Visual-Semantic Embedding Model"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "153440022",
+                        "name": "Ian J. Goodfellow"
+                    },
+                    {
+                        "authorId": "1393680089",
+                        "name": "David Warde-Farley"
+                    },
+                    {
+                        "authorId": "3087941",
+                        "name": "Pascal Lamblin"
+                    },
+                    {
+                        "authorId": "3074927",
+                        "name": "Vincent Dumoulin"
+                    },
+                    {
+                        "authorId": "153583218",
+                        "name": "Mehdi Mirza"
+                    },
+                    {
+                        "authorId": "1996134",
+                        "name": "Razvan Pascanu"
+                    },
+                    {
+                        "authorId": "32837403",
+                        "name": "J. Bergstra"
+                    },
+                    {
+                        "authorId": "3227028",
+                        "name": "Fr\u00e9d\u00e9ric Bastien"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 306,
+                "paperId": "836acf6fc99ebf81d219e2b67f7ab25efc29a6a4",
+                "referenceCount": 60,
+                "title": "Pylearn2: a machine learning research library"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "153440022",
+                        "name": "Ian J. Goodfellow"
+                    },
+                    {
+                        "authorId": "1393680089",
+                        "name": "David Warde-Farley"
+                    },
+                    {
+                        "authorId": "153583218",
+                        "name": "Mehdi Mirza"
+                    },
+                    {
+                        "authorId": "1760871",
+                        "name": "Aaron C. Courville"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 1961,
+                "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+                "referenceCount": 25,
+                "title": "Maxout Networks"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2047446108",
+                        "name": "Tomas Mikolov"
+                    },
+                    {
+                        "authorId": "2118440152",
+                        "name": "Kai Chen"
+                    },
+                    {
+                        "authorId": "32131713",
+                        "name": "G. Corrado"
+                    },
+                    {
+                        "authorId": "49959210",
+                        "name": "J. Dean"
+                    }
+                ],
+                "citationCount": 25668,
+                "paperId": "330da625c15427c6e42ccfa3b747fb29e5835bf0",
+                "referenceCount": 36,
+                "title": "Efficient Estimation of Word Representations in Vector Space"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    },
+                    {
+                        "authorId": "1935910",
+                        "name": "Gr\u00e9goire Mesnil"
+                    },
+                    {
+                        "authorId": "2921469",
+                        "name": "Y. Dauphin"
+                    },
+                    {
+                        "authorId": "2425018",
+                        "name": "S. Rifai"
+                    }
+                ],
+                "citationCount": 298,
+                "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+                "referenceCount": 43,
+                "title": "Better Mixing via Deep Representations"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2064160",
+                        "name": "A. Krizhevsky"
+                    },
+                    {
+                        "authorId": "1701686",
+                        "name": "Ilya Sutskever"
+                    },
+                    {
+                        "authorId": "1695689",
+                        "name": "Geoffrey E. Hinton"
+                    }
+                ],
+                "citationCount": 96620,
+                "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+                "referenceCount": 44,
+                "title": "ImageNet classification with deep convolutional neural networks"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2897313",
+                        "name": "Nitish Srivastava"
+                    },
+                    {
+                        "authorId": "145124475",
+                        "name": "R. Salakhutdinov"
+                    }
+                ],
+                "citationCount": 1605,
+                "paperId": "5726c7b40fcc454b77d989656c085520bf6c15fa",
+                "referenceCount": 43,
+                "title": "Multimodal learning with deep Boltzmann machines"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1695689",
+                        "name": "Geoffrey E. Hinton"
+                    },
+                    {
+                        "authorId": "2897313",
+                        "name": "Nitish Srivastava"
+                    },
+                    {
+                        "authorId": "2064160",
+                        "name": "A. Krizhevsky"
+                    },
+                    {
+                        "authorId": "1701686",
+                        "name": "Ilya Sutskever"
+                    },
+                    {
+                        "authorId": "145124475",
+                        "name": "R. Salakhutdinov"
+                    }
+                ],
+                "citationCount": 6882,
+                "paperId": "1366de5bb112746a555e9c0cd00de3ad8628aea8",
+                "referenceCount": 27,
+                "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "3119801",
+                        "name": "Xavier Glorot"
+                    },
+                    {
+                        "authorId": "1713934",
+                        "name": "Antoine Bordes"
+                    },
+                    {
+                        "authorId": "1751762",
+                        "name": "Yoshua Bengio"
+                    }
+                ],
+                "citationCount": 6960,
+                "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+                "referenceCount": 37,
+                "title": "Deep Sparse Rectifier Neural Networks"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2192178",
+                        "name": "Olga Russakovsky"
+                    },
+                    {
+                        "authorId": "48004138",
+                        "name": "Li Fei-Fei"
+                    }
+                ],
+                "citationCount": 197,
+                "paperId": "c77f1d5c9460409cdab8cf53432cb238a8105c05",
+                "referenceCount": 19,
+                "title": "Attribute Learning in Large-Scale Datasets"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "145992652",
+                        "name": "Michael U Gutmann"
+                    },
+                    {
+                        "authorId": "1791548",
+                        "name": "Aapo Hyv\u00e4rinen"
+                    }
+                ],
+                "citationCount": 1571,
+                "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+                "referenceCount": 15,
+                "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "2077257730",
+                        "name": "Kevin Jarrett"
+                    },
+                    {
+                        "authorId": "2645384",
+                        "name": "K. Kavukcuoglu"
+                    },
+                    {
+                        "authorId": "1706809",
+                        "name": "M. Ranzato"
+                    },
+                    {
+                        "authorId": "1688882",
+                        "name": "Yann LeCun"
+                    }
+                ],
+                "citationCount": 2241,
+                "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+                "referenceCount": 53,
+                "title": "What is the best multi-stage architecture for object recognition?"
+            }
+        },
+        {
+            "citedPaper": {
+                "authors": [
+                    {
+                        "authorId": "1753110",
+                        "name": "M. Huiskes"
+                    },
+                    {
+                        "authorId": "1731570",
+                        "name": "M. Lew"
+                    }
+                ],
+                "citationCount": 1399,
+                "paperId": "f79131806747fce087d0fe73d0867cc621547b2a",
+                "referenceCount": 14,
+                "title": "The MIR flickr retrieval evaluation"
+            }
+        }
+    ],
+    "offset": 0
+}

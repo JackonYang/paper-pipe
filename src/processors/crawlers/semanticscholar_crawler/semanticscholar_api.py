@@ -1,5 +1,7 @@
 import requests
 from utils.lib_cache import jcache
+import os
+import json
 
 import logging
 
@@ -14,6 +16,10 @@ paper_fileds = ','.join([
     'referenceCount',
     'citationCount',
 ])
+
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+example_dir = os.path.join(CURRENT_DIR, 'example')
 
 
 def fetch_paper_references(pid, offset, limit, **kwargs):
@@ -41,4 +47,13 @@ def do_request(key, pid, offset, limit):
     resp = requests.get(url)
     if resp.status_code != 200:
         return None
-    return resp.json()
+
+    data = resp.json()
+
+    example_file = os.path.join(example_dir, '%s.json' % key)
+    if not os.path.exists(example_file):
+        os.makedirs(example_dir, exist_ok=True)
+        with open(example_file, 'w') as f:
+            json.dump(data, f, indent=4, sort_keys=True)
+
+    return data
