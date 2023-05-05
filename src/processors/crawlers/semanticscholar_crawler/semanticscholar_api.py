@@ -54,6 +54,7 @@ def do_request(key, paper_fields,  pid, offset, limit):
     logger.debug('requesting... key: %s, url: %s' % (key, url))
     resp = requests.get(url)
     if resp.status_code != 200:
+        logger.error('rsp status_code: %s, ur: %s' % (resp.status_code, url))
         return None
 
     data = resp.json()
