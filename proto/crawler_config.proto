@@ -22,6 +22,13 @@ message SemanticScholarConfig {
   string seed_file = 1;
 
   repeated RequestConfig request_configs = 11;
+
+  // filter config
+  int32 max_round = 21;
+  int32 max_paper_in_round = 22;
+  int32 valuable_paper_yearly = 23;
+  float top_paper_ratio = 24;
+  int32 yearly_min_pick_count = 26;
 }
 
 message CrawlerConfig {

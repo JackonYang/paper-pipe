@@ -24,6 +24,9 @@ logger = logging.getLogger(__name__)
 conf = crawler_config.semantic_scholar_config
 
 
+task_history = set()
+
+
 def load_seed_urls():
     seed_file = os.path.join(PROJECT_ROOT, conf.seed_file)
 
@@ -99,9 +102,11 @@ def add_subtask(task: PaperTask, request_type: RequestType, pid: str, skip_exist
         raise ValueError('missing request config for %s' % request_type)
 
     output_file = get_oupout_filename(pid, request_config)
-    if skip_exists and os.path.exists(output_file):
+    if skip_exists and output_file in task_history:
         logger.debug('skip existing file: %s' % output_file)
         return added_cnt
+
+    task_history.add(output_file)
 
     subtask = DownloaderTask()
     subtask.pid = pid
@@ -152,8 +157,8 @@ def sort_valid_links(links_pool):
             continue
 
         if not isinstance(link['citationCount'], int):
-            print(link)
-            break
+            drop_stat['citationCount_lt_10'] += 1
+            continue
 
         if link['citationCount'] < 10:
             drop_stat['citationCount_lt_10'] += 1
@@ -189,6 +194,48 @@ def sort_valid_links(links_pool):
     return valid_links
 
 
+def pick_top(yearly_links):
+    cnt = len(yearly_links)
+    valuable_cnt = min(conf.valuable_paper_yearly, int(cnt * conf.top_paper_ratio))
+    valuable_cnt = max(conf.yearly_min_pick_count, valuable_cnt)
+
+    return yearly_links[:valuable_cnt]
+
+
+def find_valuable_links(valid_links):
+    yearly_groups = {}
+    for link in valid_links:
+        key = int(link['year'])
+        yearly_groups.setdefault(key, []).append(link)
+
+    valuable_links = []
+    other_year_links = []
+
+    # newer first
+    yearly_peak = 0
+    for year, links in sorted(yearly_groups.items(), key=lambda x: x[0], reverse=True):
+        year_cnt = len(links)
+        if year_cnt > yearly_peak:
+            yearly_peak = year_cnt
+        elif year_cnt < yearly_peak * 0.5:
+            other_year_links.extend(links)
+            continue
+
+        yearly_valuable_links = pick_top(links)
+        valuable_links.extend(yearly_valuable_links)
+
+        logger.info('%s, paper count: %s, valuable choose: %s' % (
+            year, len(links), len(yearly_valuable_links)))
+
+    other_valuable_links = pick_top(other_year_links)
+    valuable_links.extend(other_valuable_links)
+
+    logger.info('%s, paper count: %s, valuable choose: %s' % (
+        'other year', len(other_year_links), len(other_valuable_links)))
+
+    return valuable_links
+
+
 def main():
     seed_urls = load_seed_urls()
 
@@ -201,26 +248,26 @@ def main():
 
     new_links = run_downloader_tasks(tasks, log_prefix=' of seed_urls.')
 
-    max_round = 2
-    max_paper_in_round = 3
+    max_round = conf.max_round
     for round in range(1, max_round+1):
-        new_links_cnt = len(new_links)
-        added_cnt_pool = add_to_links_pool(links_pool, new_links)
-        logger.debug('added %s/%s links to pool, %s duplicated' % (added_cnt_pool, new_links_cnt, new_links_cnt - added_cnt_pool))
 
-        # step 2, find valuable links
+        add_to_links_pool(links_pool, new_links)
         valid_links = sort_valid_links(links_pool)
-        logger.debug('found %s/%s valid links' % (len(valid_links), len(links_pool)))
+        valuable_links = find_valuable_links(valid_links)
 
-        valuable_cnt = min(max_paper_in_round, int(len(valid_links) * 0.01))
         tasks = []
-        for link in valid_links[:valuable_cnt]:
-            add_paper_to_tasks(tasks, pid=link['paperId'], title=link['title'])
+        for link in valuable_links:
+            title = '%s-%s' % (link['year'], link['title'])
+            add_paper_to_tasks(tasks, pid=link['paperId'], title=title)
+            if len(tasks) >= conf.max_paper_in_round:
+                break
 
-        logger.info('=== round %s info ===, %s new tasks. link_pool: %s, valid_links: %s, valuable_cnt: %s' % (
-            round, len(tasks), len(links_pool), len(valid_links), valuable_cnt
+        logger.info('=== round %s info === tasks: %s. valuable_links: %s, valid_links: %s, link_pool: %s' % (
+            round, len(tasks), len(valuable_links), len(valid_links), len(links_pool)
         ))
+
         if len(tasks) == 0:
+            logger.info('no more tasks, exit.')
             break
 
         new_links = run_downloader_tasks(tasks, log_prefix=' of round %s/%s.' % (round, max_round))

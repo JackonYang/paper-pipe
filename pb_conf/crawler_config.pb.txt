@@ -3,6 +3,12 @@ local_cache_root: "~/cache-piperPi"
 semantic_scholar_config {
     seed_file: "pb_conf/seed_url_semantic_scholar.list"
 
+    max_round: 30
+    max_paper_in_round: 300
+    valuable_paper_yearly: 100
+    yearly_min_pick_count: 1
+    top_paper_ratio: 0.01  # 1%
+
     request_configs {
         request_type: CITATION
         max_pages: 9
