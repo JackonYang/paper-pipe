@@ -4,6 +4,7 @@ import os
 import pickle
 import time
 from functools import wraps
+import inspect
 
 
 JCACHE_ROOT_DIR = os.getenv('JCACHE_ROOT_DIR', '/tmp/jcache-data')
@@ -23,7 +24,9 @@ def clean_cache(f, *args, **kwargs):
 
 def cache_key(f, *args, **kwargs):
 
-    cache_dir = os.path.join(JCACHE_ROOT_DIR, f.__name__)
+    module = inspect.getmodule(f)
+
+    cache_dir = os.path.join(JCACHE_ROOT_DIR, f.__name__, module.__name__)
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
 
