@@ -1,4 +1,5 @@
 import json
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from configs_pb2.crawler_config_pb2 import (
     RequestConfig,
@@ -27,8 +28,11 @@ req_func_map = {
 def run_tasks(task_args: list[PaperTask], log_prefix: str = ''):
     task_cnt = len(task_args)
     links = []
+    shared = {
+        'done_cnt': 0,
+    }
 
-    for idx, task in enumerate(task_args):
+    def run_job(task):
         res_info = {}
         for subtask in task.subtasks:
             data = run_one_task(subtask)
@@ -39,11 +43,21 @@ def run_tasks(task_args: list[PaperTask], log_prefix: str = ''):
             key = '%s_cnt' % subtask.task_name
             res_info[key] = len(new_links)
 
+        shared['done_cnt'] += 1
         msg = '(%s/%s)%s downloaded %s. title: %s, pid: %s' % (
-            idx + 1, task_cnt, log_prefix,
+            shared['done_cnt'], task_cnt, log_prefix,
             str(res_info), task.title, task.pid)
 
         logger.info(msg)
+
+    with ThreadPoolExecutor(max_workers=5) as t:
+        obj_list = []
+        for task in task_args:
+            obj = t.submit(run_job, task)
+            obj_list.append(obj)
+
+        for future in as_completed(obj_list):
+            future.result()
 
     return links
 
