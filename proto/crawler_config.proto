@@ -19,12 +19,13 @@ message RequestConfig {
 }
 
 message YearlyFilterConfig {
-  int32 year_start = 1;
-  int32 year_end = 2;
+  int32 year = 1;
+
   int32 min_citation = 3;
   int32 valuable_paper_yearly = 11;
-  float top_paper_ratio = 12;
   int32 yearly_min_pick_count = 13;
+
+  float top_paper_ratio = 12;
 }
 
 message SemanticScholarConfig {
@@ -35,11 +36,13 @@ message SemanticScholarConfig {
   // filter config
   int32 max_round = 21;
   int32 max_paper_in_round = 22;
+  int32 collapse_year = 27;
 
-  int32 valuable_paper_yearly = 23;
-  float top_paper_ratio = 24;
-  int32 yearly_min_pick_count = 26;
-  int32 min_citation = 27;
+  int32 min_citation = 23;
+  int32 valuable_paper_yearly = 24;
+  int32 yearly_min_pick_count = 25;
+
+  float top_paper_ratio = 26;
 
   repeated YearlyFilterConfig yearly_filters = 31;
 }

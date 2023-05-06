@@ -4,10 +4,32 @@ semantic_scholar_config {
     seed_file: "pb_conf/seed_url_semantic_scholar.list"
 
     max_round: 50
-    max_paper_in_round: 300
+    max_paper_in_round: 500
+    collapse_year: 1990
+
+    # default yearly config
+    min_citation: 10
     valuable_paper_yearly: 100
-    yearly_min_pick_count: 10
+    yearly_min_pick_count: 3
     top_paper_ratio: 0.01  # 1%
+
+    # yearly_filters {
+    #     year: 2022
+    #     min_citation: 100
+    #     yearly_min_pick_count: 2
+    # }
+
+    # yearly_filters {
+    #     year: 2015
+    #     min_citation: 1000
+    #     yearly_min_pick_count: 0
+    # }
+
+    # yearly_filters {
+    #     year: 2000
+    #     min_citation: 5000
+    #     yearly_min_pick_count: 1
+    # }
 
     request_configs {
         request_type: CITATION

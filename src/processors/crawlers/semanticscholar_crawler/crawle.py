@@ -141,9 +141,13 @@ def add_to_links_pool(links_pool, links):
 
 def get_year_config(year, key):
     year = int(year or 1900)
+
+    matched_year = 3000
     value = getattr(conf, key)
+
     for yearl_filter in conf.yearly_filters:
-        if year > yearl_filter.year_start and year < yearl_filter.year_end:
+        if year <= yearl_filter.year and matched_year > yearl_filter.year:
+            matched_year = yearl_filter.year
             value = getattr(yearl_filter, key)
 
     return value
@@ -153,7 +157,6 @@ def sort_valid_links(links_pool):
     valid_links = []
     drop_stat = {
         'no_fieldsOfStudy': 0,
-        'citationCount_lt_10': 0,
         'fieldsOfStudy_not_in': 0,
     }
 
@@ -172,7 +175,8 @@ def sort_valid_links(links_pool):
 
         min_citation = get_year_config(link.get('year'), 'min_citation')
         if link['citationCount'] < min_citation:
-            drop_stat['citationCount_lt_%s' % min_citation] += 1
+            key = 'citationCount_lt_%s' % min_citation
+            drop_stat[key] = drop_stat.get(key, 0) + 1
             continue
 
         if link.get('fieldsOfStudy') is None:
@@ -205,10 +209,15 @@ def sort_valid_links(links_pool):
     return valid_links
 
 
-def pick_top(yearly_links):
+def pick_top(yearly_links, year):
     cnt = len(yearly_links)
-    valuable_cnt = min(conf.valuable_paper_yearly, int(cnt * conf.top_paper_ratio))
-    valuable_cnt = max(conf.yearly_min_pick_count, valuable_cnt)
+
+    valuable_paper_yearly = get_year_config(year, 'valuable_paper_yearly')
+    top_paper_ratio = get_year_config(year, 'top_paper_ratio')
+    yearly_min_pick_count = get_year_config(year, 'yearly_min_pick_count')
+
+    valuable_cnt = min(valuable_paper_yearly, int(cnt * top_paper_ratio))
+    valuable_cnt = max(yearly_min_pick_count, valuable_cnt)
 
     return yearly_links[:valuable_cnt]
 
@@ -223,22 +232,23 @@ def find_valuable_links(valid_links):
     other_year_links = []
 
     # newer first
+    collapse_year = conf.collapse_year
     for year, links in sorted(yearly_groups.items(), key=lambda x: x[0], reverse=True):
-        if year < 2000:
+        if year < collapse_year:
             other_year_links.extend(links)
             continue
 
-        yearly_valuable_links = pick_top(links)
+        yearly_valuable_links = pick_top(links, year)
         valuable_links.extend(yearly_valuable_links)
 
         logger.info('%s, paper count: %s, valuable choose: %s' % (
             year, len(links), len(yearly_valuable_links)))
 
-    other_valuable_links = pick_top(other_year_links)
+    other_valuable_links = pick_top(other_year_links, collapse_year-1)
     valuable_links.extend(other_valuable_links)
 
     logger.info('%s, paper count: %s, valuable choose: %s' % (
-        'other year', len(other_year_links), len(other_valuable_links)))
+        'other', len(other_year_links), len(other_valuable_links)))
 
     return valuable_links
 
