@@ -139,6 +139,16 @@ def add_to_links_pool(links_pool, links):
     return added_cnt
 
 
+def get_year_config(year, key):
+    year = int(year or 1900)
+    value = getattr(conf, key)
+    for yearl_filter in conf.yearly_filters:
+        if year > yearl_filter.year_start and year < yearl_filter.year_end:
+            value = getattr(yearl_filter, key)
+
+    return value
+
+
 def sort_valid_links(links_pool):
     valid_links = []
     drop_stat = {
@@ -160,8 +170,9 @@ def sort_valid_links(links_pool):
             drop_stat['citationCount_lt_10'] += 1
             continue
 
-        if link['citationCount'] < 10:
-            drop_stat['citationCount_lt_10'] += 1
+        min_citation = get_year_config(link.get('year'), 'min_citation')
+        if link['citationCount'] < min_citation:
+            drop_stat['citationCount_lt_%s' % min_citation] += 1
             continue
 
         if link.get('fieldsOfStudy') is None:
@@ -212,12 +223,8 @@ def find_valuable_links(valid_links):
     other_year_links = []
 
     # newer first
-    yearly_peak = 0
     for year, links in sorted(yearly_groups.items(), key=lambda x: x[0], reverse=True):
-        year_cnt = len(links)
-        if year_cnt > yearly_peak:
-            yearly_peak = year_cnt
-        elif year_cnt < yearly_peak * 0.5:
+        if year < 2000:
             other_year_links.extend(links)
             continue
 
